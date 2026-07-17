@@ -3,89 +3,851 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENTERTAINMENT EARNINGS GRID — 2026年7月17日</title>
+<title>ENTERTAINMENT EARNINGS GRID â 2026å¹´7æ17æ¥</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
-:root{color-scheme:light;}*{box-sizing:border-box;margin:0;padding:0;}body{background:#f5f7fb;color:#1a1f36;font-family:'Segoe UI','Noto Sans JP',sans-serif;min-height:100vh;font-size:14px;}
-header{background:linear-gradient(135deg,#1a2a6c,#2563eb);padding:18px 28px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-header h1{font-size:19px;font-weight:800;letter-spacing:2px;color:#fff;}header h1 span{color:#93c5fd;}header .sub{font-size:11px;color:#bfdbfe;margin-top:3px;}
-.updated-badge{background:#3b82f6;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;}.header-right{text-align:right;font-size:11px;color:#bfdbfe;}
-.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 28px;background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10;}
-.search-box{flex:1;min-width:180px;background:#f8faff;border:1px solid #cbd5e1;border-radius:8px;padding:7px 12px;color:#1a1f36;font-size:13px;outline:none;}
-.search-box:focus{border-color:#3b82f6;}.filter-group{display:flex;gap:6px;flex-wrap:wrap;}
-.filter-btn{padding:5px 13px;border-radius:20px;border:1px solid #cbd5e1;background:#f8faff;color:#64748b;font-size:12px;cursor:pointer;}
-.filter-btn.active{background:#eff6ff;border-color:#3b82f6;color:#2563eb;font-weight:600;}
-.filter-btn[data-cat="toy"].active{background:#fffbeb;border-color:#f59e0b;color:#b45309;}
-.filter-btn[data-cat="anime"].active{background:#faf5ff;border-color:#9333ea;color:#7e22ce;}
-.filter-btn[data-cat="park"].active{background:#fff1f2;border-color:#f43f5e;color:#be123c;}
-.period-label{font-size:11px;color:#64748b;white-space:nowrap;}
-.period-btn{padding:5px 12px;border-radius:20px;border:1px solid #cbd5e1;background:#f8faff;color:#64748b;font-size:12px;cursor:pointer;}
-.period-btn.active{background:#f5f3ff;border-color:#8b5cf6;color:#7c3aed;font-weight:600;}
-main{padding:20px 28px;max-width:1300px;margin:0 auto;}
-.period-banner{display:none;margin-bottom:16px;padding:10px 16px;border-radius:8px;font-size:12px;background:#f5f3ff;border:1px solid #c4b5fd;color:#6d28d9;align-items:center;gap:8px;}
-.period-banner .count{font-weight:800;font-size:17px;color:#4c1d95;}
-.kpi-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin-bottom:22px;}
-.kpi-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
-.kpi-label{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;}.kpi-val{font-size:21px;font-weight:800;margin-top:4px;color:#1a1f36;}.kpi-chg{font-size:11px;margin-top:3px;}
-.up{color:#059669;}.dn{color:#dc2626;}
-.chart-section{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
-.chart-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
-.chart-card h3{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}.chart-wrap{position:relative;height:200px;}
-.grid-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
-.grid-header h2{font-size:14px;font-weight:700;color:#1a1f36;}.results-count{font-size:12px;color:#94a3b8;}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;}
-.company-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;transition:border-color 0.18s,box-shadow 0.18s,opacity 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.05);}
-.company-card:hover{border-color:#3b82f6;box-shadow:0 4px 14px rgba(59,130,246,0.12);}
-.company-card.hidden{display:none;}.company-card.card-dimmed{opacity:0.38;}
-.card-header{padding:14px 16px 10px;display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid #f1f5f9;}
-.company-logo{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;flex-shrink:0;}
-.card-title .name{font-size:13px;font-weight:700;color:#1a1f36;}.card-title .ticker{font-size:10px;color:#94a3b8;margin-top:1px;}
-.badge-row{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}.badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;}
-.badge-game{background:#dbeafe;color:#1d4ed8;}.badge-toy{background:#fef3c7;color:#b45309;}.badge-anime{background:#f3e8ff;color:#7e22ce;}
-.badge-park{background:#ffe4e6;color:#be123c;}.badge-full{background:#e0f2fe;color:#0369a1;}.badge-new{background:#f5f3ff;color:#7c3aed;font-weight:800;}
-.card-metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#f1f5f9;}
-.metric{background:#fff;padding:10px 12px;}.m-label{font-size:9px;color:#94a3b8;margin-bottom:3px;text-transform:uppercase;}
-.m-val{font-size:14px;font-weight:700;color:#1a1f36;}.m-chg{font-size:10px;margin-top:2px;}
-.card-footer{padding:8px 14px;}.expand-btn{width:100%;background:#f8faff;border:1px solid #e2e8f0;color:#64748b;border-radius:6px;padding:5px;font-size:11px;cursor:pointer;}
-.expand-btn:hover{border-color:#3b82f6;color:#2563eb;background:#eff6ff;}.card-detail{padding:12px 16px 14px;border-top:1px solid #f1f5f9;}
-.card-detail.collapsed{display:none;}.detail-label{font-size:10px;color:#94a3b8;margin-bottom:5px;text-transform:uppercase;letter-spacing:1px;}
-.detail-text{font-size:12px;color:#374151;line-height:1.7;}.highlight-item{margin-top:7px;padding:7px 10px;background:#eff6ff;border-left:3px solid #3b82f6;border-radius:4px;font-size:11px;color:#1e40af;}
-.no-results{text-align:center;padding:50px 20px;color:#94a3b8;font-size:13px;display:none;}
-.source-footer{margin-top:36px;padding:14px;border-top:1px solid #e2e8f0;font-size:10px;color:#94a3b8;line-height:1.8;}
-.source-footer a{color:#3b82f6;text-decoration:none;}
-@media(max-width:700px){header,.controls,main{padding-left:14px;padding-right:14px;}.chart-section{grid-template-columns:1fr;}.card-grid{grid-template-columns:1fr;}}
-</style></head><body>
-<header><div><h1>ENTERTAINMENT <span>EARNINGS GRID</span></h1><div class="sub">国内エンタメ業界 決算ダッシュボード — FY2026 通期</div></div><div class="header-right"><div class="updated-badge">UPDATED</div><br>2026年7月17日<br><span style="font-size:10px">データ: 各社IR資料・ニュース記事</span></div></header>
-<div class="controls"><input class="search-box" type="text" id="searchInput" placeholder="🔍  企業名・セクターで検索..."><div class="filter-group"><button class="filter-btn active" data-cat="all">すべて</button><button class="filter-btn" data-cat="game">ゲーム</button><button class="filter-btn" data-cat="toy">トイホビー</button><button class="filter-btn" data-cat="anime">アニメ・映像</button><button class="filter-btn" data-cat="park">テーマパーク</button></div><div style="margin-left:auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap;"><span class="period-label">📅 情報ソース期間:</span><button class="period-btn active" data-days="7">1週間</button><button class="period-btn" data-days="14">2週間</button><button class="period-btn" data-days="30">1ヶ月</button><button class="period-btn" data-days="90">3ヶ月</button></div></div>
-<main><div class="period-banner" id="periodBanner">📅 選択期間内の新規発表: <span class="count" id="periodCount">0</span>件 <span id="periodRange" style="color:#7c3aed;font-size:11px;"></span><span style="margin-left:auto;font-size:10px;color:#8b5cf6;">期間外はグレーアウト</span></div>
-<div class="kpi-bar"><div class="kpi-card"><div class="kpi-label">集計企業数</div><div class="kpi-val">9社</div><div class="kpi-chg" style="color:#94a3b8">FY2026通期</div></div><div class="kpi-card"><div class="kpi-label">最高成長企業</div><div class="kpi-val" style="font-size:17px">任天堂</div><div class="kpi-chg up">↑ 売上 +98.6%</div></div><div class="kpi-card"><div class="kpi-label">最高利益成長</div><div class="kpi-val" style="font-size:17px">サンリオ</div><div class="kpi-chg up">↑ 営業利益 +50.3%</div></div><div class="kpi-card"><div class="kpi-label">注目IP</div><div class="kpi-val" style="font-size:16px">ガンダム</div><div class="kpi-chg up">↑ 2,543億円 (+66%)</div></div><div class="kpi-card"><div class="kpi-label">赤字転落</div><div class="kpi-val" style="font-size:17px">セガサミー</div><div class="kpi-chg dn">↓ 最終 -57億円</div></div></div>
-<div class="chart-section"><div class="chart-card"><h3>売上高成長率（前年比 %）</h3><div class="chart-wrap"><canvas id="growthChart"></canvas></div></div><div class="chart-card"><h3>営業利益成長率（前年比 %）</h3><div class="chart-wrap"><canvas id="opChart"></canvas></div></div></div>
-<div class="grid-header"><h2>企業別 決算カード</h2><span class="results-count" id="resultsCount">9件表示中</span></div>
-<div class="card-grid" id="cardGrid">
-<div class="company-card" data-name="任天堂" data-cats="game" data-release="2026-05-08"><div class="card-header"><div class="company-logo" style="background:#fee2e2;color:#dc2626;">任</div><div class="card-title"><div class="name">任天堂</div><div class="ticker">7974 | ゲーム</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-full">通期</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">2兆3,131億</div><div class="m-chg up">↑ +98.6%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">3,601億</div><div class="m-chg up">↑ +27.5%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">4,241億</div><div class="m-chg up">↑ +52.1%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">Nintendo Switch 2が2025年6月発売。初年度1,986万台、ソフト4,871万本を達成。全カテゴリー増収増益。</div><div class="highlight-item">Switch 2 初年度: 1,986万台</div><div class="highlight-item">ソフト: 4,871万本</div></div></div>
-<div class="company-card" data-name="バンダイナムコ" data-cats="game toy anime" data-release="2026-05-13"><div class="card-header"><div class="company-logo" style="background:#dbeafe;color:#1d4ed8;">バ</div><div class="card-title"><div class="name">バンダイナムコHD</div><div class="ticker">7832 | ゲーム・トイホビー・アニメ</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-toy">トイホビー</span><span class="badge badge-anime">アニメ</span><span class="badge badge-full">通期</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">1兆3,482億</div><div class="m-chg up">↑ +8.6%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,895億</div><div class="m-chg up">↑ +5.2%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,407億</div><div class="m-chg up">↑ +8.8%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">売上高・営業利益ともに過去最高。ガンダムIPが2,543億円に急拡大（+66%）。万博出展も相乗効果。</div><div class="highlight-item">ガンダムIP: 2,543億円（前期比+66%）</div></div></div>
-<div class="company-card" data-name="コナミ" data-cats="game" data-release="2026-05-15"><div class="card-header"><div class="company-logo" style="background:#ffe4e6;color:#e11d48;">コ</div><div class="card-title"><div class="name">コナミグループ</div><div class="ticker">9766 | ゲーム・スポーツ</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-full">通期</span><span class="badge" style="background:#dcfce7;color:#15803d;">3期連続最高</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">4,937億</div><div class="m-chg up">↑ +17.1%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,359億</div><div class="m-chg up">↑ +33.3%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,000億</div><div class="m-chg up">↑ +33.9%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">全指標で3期連続過去最高を更新。デジタル・スポーツ・アミューズメント事業が安定成長。</div><div class="highlight-item">営業利益率: 約27.5%</div></div></div>
-<div class="company-card" data-name="カプコン" data-cats="game" data-release="2026-05-09"><div class="card-header"><div class="company-logo" style="background:#fef3c7;color:#b45309;">カ</div><div class="card-title"><div class="name">カプコン</div><div class="ticker">9697 | ゲーム</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-full">通期</span><span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">1,954億</div><div class="m-chg up">↑ +15.2%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">753億</div><div class="m-chg up">↑ +14.5%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +12.7%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">売上高・営業利益ともに過去最高。バイオハザード・モンスターハンターが海外で堅調。</div><div class="highlight-item">営業利益率: 約38.5%</div></div></div>
-<div class="company-card" data-name="スクウェアエニックス スクエニ" data-cats="game anime" data-release="2026-05-14"><div class="card-header"><div class="company-logo" style="background:#f1f5f9;color:#475569;">ス</div><div class="card-title"><div class="name">スクウェア・エニックスHD</div><div class="ticker">9684 | ゲーム・アニメ</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-anime">アニメ</span><span class="badge badge-full">通期</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">2,977億</div><div class="m-chg dn">↓ -8.3%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">547億</div><div class="m-chg up">↑ +34.9%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">296億</div><div class="m-chg up">↑ +21.3%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">「量から質」戦略転換が奏功。売上減も営業利益+34.9%と大幅増益。DQシリーズ好調。</div><div class="highlight-item">営業利益率 約18.4%（大幅改善）</div></div></div>
-<div class="company-card" data-name="セガサミー セガ" data-cats="game park" data-release="2026-05-12"><div class="card-header"><div class="company-logo" style="background:#fff1f2;color:#e11d48;">セ</div><div class="card-title"><div class="name">セガサミーHD</div><div class="ticker">6460 | ゲーム・テーマパーク</div><div class="badge-row"><span class="badge badge-game">ゲーム</span><span class="badge badge-park">テーマパーク</span><span class="badge badge-full">通期</span><span class="badge" style="background:#fee2e2;color:#dc2626;">最終赤字</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">4,875億</div><div class="m-chg" style="color:#94a3b8">—</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">471億</div><div class="m-chg" style="color:#94a3b8">—</div></div><div class="metric"><div class="m-label">最終損益</div><div class="m-val dn">-57億</div><div class="m-chg dn">↓ 赤字転落</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">Rovio(313億)・Stakelogic(187億)の減損損失計上で最終赤字。Super Game構想は中止。</div><div class="highlight-item">Rovio減損313億 / Super Game構想中止</div></div></div>
-<div class="company-card" data-name="東宝" data-cats="anime" data-release="2026-04-14"><div class="card-header"><div class="company-logo" style="background:#f3e8ff;color:#9333ea;">東</div><div class="card-title"><div class="name">東宝</div><div class="ticker">9602 | 映画・アニメ・演劇</div><div class="badge-row"><span class="badge badge-anime">アニメ・映像</span><span class="badge badge-full">通期</span><span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">営業収入</div><div class="m-val">3,607億</div><div class="m-chg up">↑ +15.2%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">679億</div><div class="m-chg up">↑ +5.0%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">517億</div><div class="m-chg up">↑ +19.4%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">劇場版「鬼滅の刃」・「国宝」がメガヒット。過去最高水準を更新（FY2026/2期）。</div><div class="highlight-item">「国宝」：22年ぶり実写映画国内興収記録更新</div></div></div>
-<div class="company-card" data-name="サンリオ" data-cats="toy park anime" data-release="2026-05-14"><div class="card-header"><div class="company-logo" style="background:#fce7f3;color:#be185d;">サ</div><div class="card-title"><div class="name">サンリオ</div><div class="ticker">8136 | キャラクター・テーマパーク</div><div class="badge-row"><span class="badge badge-toy">トイホビー</span><span class="badge badge-park">テーマパーク</span><span class="badge badge-full">通期</span><span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">1,941億</div><div class="m-chg up">↑ +33.9%</div></div><div class="metric"><div class="m-label">営業利益</div><div class="m-val">779億</div><div class="m-chg up">↑ +50.3%</div></div><div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +30.9%</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">全指標で過去最高を更新。北米・アジアのライセンス収入が急拡大。</div><div class="highlight-item">営業利益成長率+50.3%（9社中最高）</div></div></div>
-<div class="company-card" data-name="東映アニメーション 東映" data-cats="anime" data-release="2026-05-13"><div class="card-header"><div class="company-logo" style="background:#f3e8ff;color:#7c3aed;">ア</div><div class="card-title"><div class="name">東映アニメーション</div><div class="ticker">4816 | アニメ制作・版権</div><div class="badge-row"><span class="badge badge-anime">アニメ・映像</span><span class="badge badge-full">通期</span></div></div></div><div class="card-metrics"><div class="metric"><div class="m-label">売上高</div><div class="m-val">671億</div><div class="m-chg dn">↓ -7.6%</div></div><div class="metric"><div class="m-label">主要IP</div><div class="m-val" style="font-size:12px">DB・OP</div><div class="m-chg" style="color:#94a3b8">継続安定</div></div><div class="metric"><div class="m-label">期</div><div class="m-val" style="font-size:12px">3Q累計</div><div class="m-chg" style="color:#94a3b8">FY2026/3</div></div></div><div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div><div class="card-detail collapsed"><div class="detail-label">決算サマリー</div><div class="detail-text">3Q累計671億円、前年同期比7.6%減。ドラゴンボール・ワンピース・プリキュアで安定収益。</div><div class="highlight-item">主力IP: ドラゴンボール・ワンピース・プリキュア</div></div></div>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f7fb; color: #1a1f36; font-family: 'Segoe UI', 'Noto Sans JP', sans-serif; min-height: 100vh; font-size: 14px; }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a2a6c, #2563eb);
+    padding: 18px 28px 14px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  }
+  header h1 { font-size: 19px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+  header h1 span { color: #93c5fd; }
+  header .sub { font-size: 11px; color: #bfdbfe; margin-top: 3px; }
+  .updated-badge { background: #3b82f6; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .header-right { text-align: right; font-size: 11px; color: #bfdbfe; }
+
+  /* CONTROLS */
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 12px 28px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10;
+  }
+  .search-box {
+    flex: 1; min-width: 180px;
+    background: #f8faff; border: 1px solid #cbd5e1; border-radius: 8px;
+    padding: 7px 12px; color: #1a1f36; font-size: 13px; outline: none; transition: border-color 0.2s;
+  }
+  .search-box:focus { border-color: #3b82f6; }
+  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 5px 13px; border-radius: 20px; border: 1px solid #cbd5e1;
+    background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
+  }
+  .filter-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+  .filter-btn.active { background: #eff6ff; border-color: #3b82f6; color: #2563eb; font-weight: 600; }
+  .filter-btn[data-cat="game"].active  { background:#eff6ff; border-color:#3b82f6; color:#1d4ed8; }
+  .filter-btn[data-cat="toy"].active   { background:#fffbeb; border-color:#f59e0b; color:#b45309; }
+  .filter-btn[data-cat="anime"].active { background:#faf5ff; border-color:#9333ea; color:#7e22ce; }
+  .filter-btn[data-cat="park"].active  { background:#fff1f2; border-color:#f43f5e; color:#be123c; }
+
+  /* PERIOD */
+  .period-label { font-size: 11px; color: #64748b; white-space: nowrap; }
+  .period-btn {
+    padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1;
+    background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
+  }
+  .period-btn.active { background: #f5f3ff; border-color: #8b5cf6; color: #7c3aed; font-weight: 600; }
+
+  /* MAIN */
+  main { padding: 20px 28px; max-width: 1300px; margin: 0 auto; }
+
+  /* PERIOD BANNER */
+  .period-banner {
+    display: none; margin-bottom: 16px; padding: 10px 16px; border-radius: 8px; font-size: 12px;
+    background: #f5f3ff; border: 1px solid #c4b5fd; color: #6d28d9;
+    align-items: center; gap: 8px;
+  }
+  .period-banner .count { font-weight: 800; font-size: 17px; color: #4c1d95; }
+
+  /* KPI */
+  .kpi-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px,1fr)); gap: 12px; margin-bottom: 22px; }
+  .kpi-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .kpi-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+  .kpi-val { font-size: 21px; font-weight: 800; margin-top: 4px; color: #1a1f36; }
+  .kpi-chg { font-size: 11px; margin-top: 3px; }
+  .up { color: #059669; } .dn { color: #dc2626; }
+
+  /* CHARTS */
+  .chart-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; }
+  .chart-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+  .chart-card h3 { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .chart-wrap { position: relative; height: 200px; }
+
+  /* GRID HEADER */
+  .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .grid-header h2 { font-size: 14px; font-weight: 700; color: #1a1f36; }
+  .results-count { font-size: 12px; color: #94a3b8; }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .company-card {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+    overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, opacity 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .company-card:hover { border-color: #3b82f6; box-shadow: 0 4px 14px rgba(59,130,246,0.12); }
+  .company-card.hidden { display: none; }
+  .company-card.card-dimmed { opacity: 0.38; }
+
+  .card-header { padding: 14px 16px 10px; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid #f1f5f9; }
+  .company-logo { width: 40px; height: 40px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; flex-shrink: 0; }
+  .card-title .name { font-size: 13px; font-weight: 700; color: #1a1f36; }
+  .card-title .ticker { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+  .badge-row { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
+  .badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .badge-game  { background: #dbeafe; color: #1d4ed8; }
+  .badge-toy   { background: #fef3c7; color: #b45309; }
+  .badge-anime { background: #f3e8ff; color: #7e22ce; }
+  .badge-park  { background: #ffe4e6; color: #be123c; }
+  .badge-full  { background: #e0f2fe; color: #0369a1; }
+  .badge-new   { background: #f5f3ff; color: #7c3aed; font-weight: 800; }
+
+  .card-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #f1f5f9; }
+  .metric { background: #fff; padding: 10px 12px; }
+  .m-label { font-size: 9px; color: #94a3b8; margin-bottom: 3px; text-transform: uppercase; }
+  .m-val { font-size: 14px; font-weight: 700; color: #1a1f36; }
+  .m-chg { font-size: 10px; margin-top: 2px; }
+
+  .card-footer { padding: 8px 14px; }
+  .expand-btn {
+    width: 100%; background: #f8faff; border: 1px solid #e2e8f0; color: #64748b;
+    border-radius: 6px; padding: 5px; font-size: 11px; cursor: pointer; transition: all 0.18s;
+  }
+  .expand-btn:hover { border-color: #3b82f6; color: #2563eb; background: #eff6ff; }
+  .card-detail { padding: 12px 16px 14px; border-top: 1px solid #f1f5f9; }
+  .card-detail.collapsed { display: none; }
+  .detail-label { font-size: 10px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+  .detail-text { font-size: 12px; color: #374151; line-height: 1.7; }
+  .highlight-item { margin-top: 7px; padding: 7px 10px; background: #eff6ff; border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 11px; color: #1e40af; }
+
+  .no-results { text-align: center; padding: 50px 20px; color: #94a3b8; font-size: 13px; display: none; }
+  .source-footer { margin-top: 36px; padding: 14px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #94a3b8; line-height: 1.8; }
+  .source-footer a { color: #3b82f6; text-decoration: none; }
+
+  @media (max-width: 700px) {
+    header, .controls, main { padding-left: 14px; padding-right: 14px; }
+    .chart-section { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>ENTERTAINMENT <span>EARNINGS GRID</span></h1>
+    <div class="sub">å½åã¨ã³ã¿ã¡æ¥­ç æ±ºç®ããã·ã¥ãã¼ã â FY2026 éæ</div>
+  </div>
+  <div class="header-right">
+    <div class="updated-badge">UPDATED</div><br>
+    2026å¹´7æ17æ¥<br>
+    <span style="font-size:10px">ãã¼ã¿: åç¤¾IRè³æã»ãã¥ã¼ã¹è¨äº</span>
+  </div>
+</header>
+
+<div class="controls">
+  <input class="search-box" type="text" id="searchInput" placeholder="ð  ä¼æ¥­åã»ã»ã¯ã¿ã¼ã§æ¤ç´¢...">
+  <div class="filter-group">
+    <button class="filter-btn active" data-cat="all">ãã¹ã¦</button>
+    <button class="filter-btn" data-cat="game">ã²ã¼ã </button>
+    <button class="filter-btn" data-cat="toy">ãã¤ããã¼</button>
+    <button class="filter-btn" data-cat="anime">ã¢ãã¡ã»æ å</button>
+    <button class="filter-btn" data-cat="park">ãã¼ããã¼ã¯</button>
+  </div>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
+    <span class="period-label">ð æå ±ã½ã¼ã¹æé:</span>
+    <button class="period-btn active" data-days="7">1é±é</button>
+    <button class="period-btn" data-days="14">2é±é</button>
+    <button class="period-btn" data-days="30">1ã¶æ</button>
+    <button class="period-btn" data-days="90">3ã¶æ</button>
+  </div>
 </div>
-<div class="no-results" id="noResults">該当する企業が見つかりませんでした。</div>
-<div class="source-footer"><strong>出典</strong>: 各社IR資料・決算短信（FY2026通期）、<a href="https://gamebiz.jp/" target="_blank">gamebiz.jp</a>、<a href="https://www.nikkei.com/" target="_blank">日本経済新聞</a> — 東映アニメーションは3Q累計値。<span style="float:right">更新: 2026-07-17</span></div>
+
+<main>
+
+  <div class="period-banner" id="periodBanner">
+    ð é¸ææéåã®æ°è¦çºè¡¨: <span class="count" id="periodCount">0</span>ä»¶
+    <span id="periodRange" style="color:#7c3aed;font-size:11px;"></span>
+    <span style="margin-left:auto;font-size:10px;color:#8b5cf6;">æéå¤ã¯ã°ã¬ã¼ã¢ã¦ã</span>
+  </div>
+
+  <!-- KPI BAR -->
+  <div class="kpi-bar">
+    <div class="kpi-card">
+      <div class="kpi-label">éè¨ä¼æ¥­æ°</div>
+      <div class="kpi-val">18ç¤¾</div>
+      <div class="kpi-chg" style="color:#94a3b8">FY2026ï¼2ç¤¾ã¯äºæ³ï¼</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">æé«æé·ä¼æ¥­</div>
+      <div class="kpi-val" style="font-size:17px">ä»»å¤©å </div>
+      <div class="kpi-chg up">â å£²ä¸ +98.6%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">æé«å©çæé·</div>
+      <div class="kpi-val" style="font-size:17px">ãµã³ãªãª</div>
+      <div class="kpi-chg up">â å¶æ¥­å©ç +50.3%</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">æ³¨ç®IP</div>
+      <div class="kpi-val" style="font-size:16px">ã¬ã³ãã </div>
+      <div class="kpi-chg up">â 2,543åå (+66%)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">èµ¤å­è»¢è½</div>
+      <div class="kpi-val" style="font-size:17px">ã»ã¬ãµãã¼</div>
+      <div class="kpi-chg dn">â æçµ -57åå</div>
+    </div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="chart-section">
+    <div class="chart-card">
+      <h3>å£²ä¸é«æé·çï¼åå¹´æ¯ %ï¼</h3>
+      <div class="chart-wrap"><canvas id="growthChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>å¶æ¥­å©çæé·çï¼åå¹´æ¯ %ï¼</h3>
+      <div class="chart-wrap"><canvas id="opChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- GRID HEADER -->
+  <div class="grid-header">
+    <h2>ä¼æ¥­å¥ æ±ºç®ã«ã¼ã</h2>
+    <span class="results-count" id="resultsCount">9ä»¶è¡¨ç¤ºä¸­</span>
+  </div>
+
+  <div class="card-grid" id="cardGrid">
+
+    <!-- ä»»å¤©å  -->
+    <div class="company-card" data-name="ä»»å¤©å " data-cats="game" data-release="2026-05-08">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fee2e2;color:#dc2626;">ä»»</div>
+        <div class="card-title">
+          <div class="name">ä»»å¤©å </div>
+          <div class="ticker">7974 | ã²ã¼ã </div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">2å3,131å</div><div class="m-chg up">â +98.6%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">3,601å</div><div class="m-chg up">â +27.5%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">4,241å</div><div class="m-chg up">â +52.1%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">Nintendo Switch 2ã2025å¹´6æã«çºå£²ãåå¹´åº¦è²©å£²å°æ°1,986ä¸å°ãã½ãã4,871ä¸æ¬ãéæããå¨ã«ãã´ãªã¼ãå¢åå¢çã</div>
+        <div class="highlight-item">Switch 2 åå¹´åº¦è²©å£²å°æ°: 1,986d¸å°</div>
+        <div class="highlight-item">ã½ããè²©å£²æ¬æ°: 4,871ä¸æ¬</div>
+      </div>
+    </div>
+
+    <!-- ãã³ãã¤ãã ã³ -->
+    <div class="company-card" data-name="ãã³ãã¤ãã ã³" data-cats="game toy anime" data-release="2026-05-13">
+      <div class="card-header">
+        <div class="company-logo" style="background:#dbeafe;color:#1d4ed8;">ã</div>
+        <div class="card-title">
+          <div class="name">ãã³ãã¤ãã ã³HD</div>
+          <div class="ticker">7832 | ã²ã¼ã ã»ãã¤ããã¼ã»ã¢ãã¡</div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge badge-anime">ã¢ãã¡</span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">1å3,482å</div><div class="m-chg up">â +8.6%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">1,895å</div><div class="m-chg up">â +5.2%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">1,407å</div><div class="m-chg up">â +8.8%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å£²ä¸é«ã»å¶æ¥­å©çã¨ãã«éå»æé«ãã¬ã³ãã IPãåææ¯+1,008ååã®2,543ååã«æ¥æ¡å¤§ãæ åä½åã»å¤§éªä¸ååºå±ãç¸ä¹å¹æã</div>
+        <div class="highlight-item">ã¬ã³ãã IPå£²ä¸é«: 2,543ååï¼åæ1,535åå â +66%ï¼</div>
+        <div class="highlight-item">ç´¯è¨å£²ä¸é«1ååãåãã¦çªç ´ï¼3Qåç¬ï¼</div>
+      </div>
+    </div>
+
+    <!-- ã³ããã°ã«ã¼ã -->
+    <div class="company-card" data-name="ã³ãã" data-cats="game" data-release="2026-05-15">
+      <div class="card-header">
+        <div class="company-logo" style="background:#ffe4e6;color:#e11d48;">ã³</div>
+        <div class="card-title">
+          <div class="name">ã³ããã°ã«ã¼ã</div>
+          <div class="ticker">9766 | ã²ã¼ã ã»ã¹ãã¼ã</div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">3æé£ç¶æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">4,937å</div><div class="m-chg up">â +17.1%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">1,359å</div><div class="m-chg up">â +33.3%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">1,000å</div><div class="m-chg up">â +33.9%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å¨ææ¨ã§3æé£ç¶éå»æé«ãæ´æ°ããã¸ã¿ã«ã»ã¹ãã¼ãã»ã¢ãã¥ã¼ãºã¡ã³ãäºæ¥­ãå®å®æé·ãeã¹ãã¼ãã¨ãªã¢ã«ã¤ãã³ãé£æºãåçã«è²¢ç®ã</div>
+        <div class="highlight-item">å¶æ¥­å©çç: ç´27.5%ï¼æ¥­çæé«æ°´æºï¼</div>
+      </div>
+    </div>
+
+    <!-- ã«ãã³ã³ -->
+    <div class="company-card" data-name="ã«ãã³ã³" data-cats="game" data-release="2026-05-09">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fef3c7;color:#b45309;">ã«</div>
+        <div class="card-title">
+          <div class="name">ã«ãã³ã³</div>
+          <div class="ticker">9697 | ã²ã¼ã </div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">éå»æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">1,954å</div><div class="m-chg up">â +15.2%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">753å</div><div class="m-chg up">â +14.5%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">546å</div><div class="m-chg up">â +12.7%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">é£çµå£²ä¸é«ã»å¶æ¥­å©çã¨ãã«éå»æé«ããã¤ãªãã¶ã¼ãã»ã¢ã³ã¹ã¿ã¼ãã³ã¿ã¼ã·ãªã¼ãºãæµ·å¤ã§å èª¿ãDLCåçãæ¡å¤§ã</div>
+        <div class="highlight-item">å¶æ¥­å©çç: ç´38.5%ï¼å®å®ããé«åçä½è³ªï¼</div>
+        <div class="highlight-item">æµ·å¤å£²ä¸æ¯çãå½åãä¸åã</div>
+      </div>
+    </div>
+
+    <!-- ã¹ã¯ã¦ã§ã¢ã¨ããã¯ã¹ -->
+    <div class="company-card" data-name="ã¹ã¯ã¦ã§ã¢ã¨ããã¯ã¹ ã¹ã¯ã¨ã" data-cats="game anime" data-release="2026-05-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#f1f5f9;color:#475569;">ã¹</div>
+        <div class="card-title">
+          <div class="name">ã¹ã¯ã¦ã§ã¢ã»ã¨ããã¯ã¹HD</div>
+          <div class="ticker">9684 | ã²ã¼ã ã»ã¢ãã¡</div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-anime">ã¢ãã¡</span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">2,977å</div><div class="m-chg dn">â -8.3%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">547å</div><div class="m-chg up">â +34.9%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">296å</div><div class="m-chg up">â +21.3%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">ãéããè³ªãæ¦ç¥è»¢æãå¥åãå£²ä¸æ¸ãå¶æ¥­å©çã¯+34.9%ã¨å¤§å¹å¢çãDQã·ãªã¼ãºæ°ä½ã»ã©ã¤ãåå¥ãå¯ä¸ã</div>
+        <div class="highlight-item">å¶æ¥­å©çç ç´18.4%ï¼å¤§å¹æ¹åï¼</div>
+        <div class="highlight-item">2027/3æäºæ³: å£²ä¸+0.1%ãå¶æ¥­å©ç-10.5%</div>
+      </div>
+    </div>
+
+    <!-- ã»ã¬ãµãã¼ -->
+    <div class="company-card" data-name="ã»ã¬ãµãã¼ ã»ã¬" data-cats="game park" data-release="2026-05-12">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fff1f2;color:#e11d48;">ã»</div>
+        <div class="card-title">
+          <div class="name">ã»ã¬ãµãã¼HD</div>
+          <div class="ticker">6460 | ã²ã¼ã ã»ãã¼ããã¼ã¯</div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-park">ãã¼ããã¼ã¯</span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#fee2e2;color:#dc2626;">æçµèµ¤å­</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">4,875å</div><div class="m-chg" style="color:#94a3b8">â</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">471å</div><div class="m-chg" style="color:#94a3b8">â</div></div>
+        <div class="metric"><div class="m-label">æçµæç</div><div class="m-val dn">-57å</div><div class="m-chg dn">â èµ¤å­è»¢è½</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">Rovioï¼313ååï¼ã»Stakelogicï¼187ååï¼ã®æ¸ææå¤±è¨ä¸ã«ããæçµèµ¤å­è»¢è½ããSuper Gameãæ§æ³ã¯ä¸­æ­¢ã</div>
+        <div class="highlight-item">Rovio(ãã£ã³ã©ã³ã)æ¸ææå¤±: 313åå</div>
+        <div class="highlight-item">ãSuper Gameãæ§æ³ä¸­æ­¢ãçºè¡¨</div>
+      </div>
+    </div>
+
+    <!-- æ±å® -->
+    <div class="company-card" data-name="æ±å®" data-cats="anime" data-release="2026-04-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#f3e8ff;color:#9333ea;">æ±</div>
+        <div class="card-title">
+          <div class="name">æ±å®</div>
+          <div class="ticker">9602 | æ ç»ã»ã¢ãã¡ã»æ¼å</div>
+          <div class="badge-row">
+            <span class="badge badge-anime">ã¢ãã¡ã»æ å</span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">éå»æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å¶æ¥­åå¥</div><div class="m-val">3,607å</div><div class="m-chg up">â +15.2%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">679å</div><div class="m-chg up">â +5.0%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">517å</div><div class="m-chg up">â +19.4%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">åå ´çãé¬¼æ»ã®åãã»ãå½å®ãï¼22å¹´ã¶ãå®åè¨é²æ´æ°ï¼ã¡ã¬ãããããã³ãã³ãããã§ã³ã½ã¼ãã³ããå¥½èª¿ãFY2026/2æã§éå»æé«æ°´æºã</div>
+        <div class="highlight-item">ãå½å®ãï¼22å¹´ã¶ãã«å®åæ ç»ã®å½åèåè¨é²ãæ´æ°</div>
+      </div>
+    </div>
+
+    <!-- ãµã³ãªãª -->
+    <div class="company-card" data-name="ãµã³ãªãª" data-cats="toy park anime" data-release="2026-05-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fce7f3;color:#be185d;">ãµ</div>
+        <div class="card-title">
+          <div class="name">ãµã³ãªãª</div>
+          <div class="ticker">8136 | ã­ã£ã©ã¯ã¿ã¼ã»ãã¼ããã¼ã¯</div>
+          <div class="badge-row">
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge badge-park">ãã¼ããã¼ã¯</span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">éå»æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">1,941å</div><div class="m-chg up">â +33.9%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">779å</div><div class="m-chg up">â +50.3%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">546å</div><div class="m-chg up">â +30.9%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å¨ææ¨ã§éå»æé«ãæ´æ°ãå½åç©è²©ã»ãã¼ããã¼ã¯å¥½èª¿ãåç±³ã»ä¸­å½ã»éå½ã»å°æ¹¾ã§ã®ã©ã¤ã»ã³ã¹åå¥ãæ¥æ¡å¤§ã</div>
+        <div class="highlight-item">å¶æ¥­å©çæé·ç+50.3%ï¼18ç¤¾ä¸­æé«ï¼</div>
+      </div>
+    </div>
+
+    <!-- æ±æ ã¢ãã¡ã¼ã·ã§ã³ -->
+    <div class="company-card" data-name="æ±æ ã¢ãã¡ã¼ã·ã§ã³ æ±æ " data-cats="anime" data-release="2026-05-13">
+      <div class="card-header">
+        <div class="company-logo" style="background:#f3e8ff;color:#7c3aed;">ã¢</div>
+        <div class="card-title">
+          <div class="name">æ±æ ã¢ãã¡ã¼ã·ã§ã³</div>
+          <div class="ticker">4816 | ã¢ãã¡å¶ä½ã»çæ¨©</div>
+          <div class="badge-row">
+            <span class="badge badge-anime">ã¢ãã¡ã»æ å</span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">671å</div><div class="m-chg dn">â -7.6%</div></div>
+        <div class="metric"><div class="m-label">ä¸»è¦IP</div><div class="m-val" style="font-size:12px">DBã»OP</div><div class="m-chg" style="color:#94a3b8">ç¶ç¶å®å®</div></div>
+        <div class="metric"><div class="m-label">æ</div><div class="m-val" style="font-size:12px">3Qç´¯è¨</div><div class="m-chg" style="color:#94a3b8">FY2026/3</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">3Qç´¯è¨å£²ä¸é«671ååã§åå¹´åææ¯7.6%æ¸ãããã©ã´ã³ãã¼ã«ããã¯ã³ãã¼ã¹ããããªã­ã¥ã¢ããä¸»åIPã¨ãã¦å®å®åçãç¢ºä¿ã</div>
+        <div class="highlight-item">ä¸»åIP: ãã©ã´ã³ãã¼ã«ã»ã¯ã³ãã¼ã¹ã»ããªã­ã¥ã¢</div>
+      </div>
+    </div>
+
+    <!-- ãªãªã¨ã³ã¿ã«ã©ã³ã -->
+    <div class="company-card" data-name="ãªãªã¨ã³ã¿ã«ã©ã³ã OLC ãã£ãºãã¼ TDL TDS" data-cats="park" data-release="2026-04-28">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fff1f2;color:#f43f5e;">ãª</div>
+        <div class="card-title">
+          <div class="name">ãªãªã¨ã³ã¿ã«ã©ã³ã</div>
+          <div class="ticker">4661 | ãã¼ããã¼ã¯</div>
+          <div class="badge-row">
+            <span class="badge badge-park">ãã¼ããã¼ã¯</span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">å£²ä¸æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">7,045å</div><div class="m-chg up">â +3.7%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">1,684å</div><div class="m-chg dn">â -2.1%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©çç</div><div class="m-val">23.9%</div><div class="m-chg" style="color:#94a3b8">â</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å£²ä¸é«7,045ååã§éå»æé«ãæ´æ°ãå®¢åä¾¡ã»ããã«äºæ¥­ãæé«æ°´æºãä¸æ¹ãäººä»¶è²»+112ååã»è«¸çµè²»+112ååãå©çãå§è¿«ãå¶æ¥­å©çã¯å¾®æ¸ã</div>
+        <div class="highlight-item">ãã¼ããã¼ã¯äºæ¥­: å£²ä¸5,683ååï¼+2.9%ï¼ãããã«äºæ¥­: å£²ä¸1,190ååï¼+7.8%ï¼</div>
+        <div class="highlight-item">å®¢åä¾¡ãéå»æé«ãæ´æ°ï¼ææåº§å¸­ãã±ããè²©å£²å¥½èª¿ï¼</div>
+      </div>
+    </div>
+
+    <!-- KADOKAWA -->
+    <div class="company-card" data-name="KADOKAWA ã«ãã«ã¯ ã¨ã«ãã³ãªã³ã° ã¢ãã¡ åºç" data-cats="anime game" data-release="2026-05-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fef3c7;color:#92400e;">K</div>
+        <div class="card-title">
+          <div class="name">KADOKAWA</div>
+          <div class="ticker">9468 | åºçã»ã¢ãã¡ã»ã²ã¼ã </div>
+          <div class="badge-row">
+            <span class="badge badge-anime">ã¢ãã¡ã»æ å</span>
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge-full">éæ</span>
+            <span class="badge" style="background:#fee2e2;color:#dc2626;">å¤§å¹æ¸ç</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">2,829å</div><div class="m-chg up">â +1.8%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">81å</div><div class="m-chg dn">â -51.3%</div></div>
+        <div class="metric"><div class="m-label">Webãµã¼ãã¹</div><div class="m-val">é»å­è»¢æ</div><div class="m-chg up">â +21å</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">ELDEN RING NIGHTREIGNãæ³å®ä»¥ä¸ã«å¥½èª¿ã ã£ããã®ã®ãåºçã»ã²ã¼ã äºæ¥­ãæ¸åæ¸çãã¢ãã¡ã»å®åæ åäºæ¥­ã¯èµ¤å­è»¢è½ãå¶æ¥­å©çã51%æ¸ã«ã</div>
+        <div class="highlight-item">ELDEN RING NIGHTREIGN: æ³å®ãä¸åãå¥½èª¿</div>
+        <div class="highlight-item">ã¢ãã¡ã»å®åæ åäºæ¥­: èµ¤å­è»¢è½</div>
+      </div>
+    </div>
+
+    <!-- ã³ã¼ã¨ã¼ãã¯ã¢ -->
+    <div class="company-card" data-name="ã³ã¼ã¨ã¼ãã¯ã¢ ã³ã¼ãã¯ ä»ç ã¼ã«ãç¡å ãã±ã¢ã³" data-cats="game" data-release="2026-04-27">
+      <div class="card-header">
+        <div class="company-logo" style="background:#e0f2fe;color:#0369a1;">ã</div>
+        <div class="card-title">
+          <div class="name">ã³ã¼ã¨ã¼ãã¯ã¢HD</div>
+          <div class="ticker">3635 | ã²ã¼ã </div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">éå»æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">884å</div><div class="m-chg up">â +6.3%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">372å</div><div class="m-chg up">â +15.7%</div></div>
+        <div class="metric"><div class="m-label">çµå¸¸å©ç</div><div class="m-val">570å</div><div class="m-chg up">â +14.0%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å£²ä¸é«ã»çµå¸¸å©çã»æçµå©çãéå»æé«ãæ´æ°ããã½ã ã ãã±ã¢ã³ããä»ç3ããã¼ã«ãç¡å å°å°æ¦è¨ããå¤§åã¿ã¤ãcªã¨ãã¦è²¢ç®ãéèåçãæ¥­ç¸¾ãæ¼ãä¸ãã</div>
+        <div class="highlight-item">ä¸»åã¿ã¤ãã«: ã½ã ã ãã±ã¢ã³ãä»ç3ãã¼ã«ãç¡å å°å°æ¦è¨</div>
+        <div class="highlight-item">éèåç: 164ååï¼çµå¸¸å©çãå¤§å¹ã«æ¼ãä¸ãï¼</div>
+      </div>
+    </div>
+
+    <!-- ãã·ã­ã¼ã -->
+    <div class="company-card" data-name="ãã·ã­ã¼ã TCG ã«ã¼ãã²ã¼ã  ã´ã¡ã¤ã¹ã·ã¥ã´ã¡ã«ã" data-cats="game toy" data-release="2026-05-15">
+      <div class="card-header">
+        <div class="company-logo" style="background:#dcfce7;color:#15803d;">ã</div>
+        <div class="card-title">
+          <div class="name">ãã·ã­ã¼ã</div>
+          <div class="ticker">7803 | ã«ã¼ãã²ã¼ã ã»ã²ã¼ã </div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge" style="background:#f0fdf4;color:#166534;">éæäºæ³</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«(äº)</div><div class="m-val">565å</div><div class="m-chg" style="color:#94a3b8">FY2026/6æ</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç(äº)</div><div class="m-val">46å</div><div class="m-chg up">â 4æã¶ãæé«</div></div>
+        <div class="metric"><div class="m-label">ç´å©ç(äº)</div><div class="m-val">55å</div><div class="m-chg up">â ä¸æ¹ä¿®æ­£</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼ï¼3Qçºè¡¨ã»éæäºæ³ï¼</div>
+        <div class="detail-text">ã´ã¡ã¤ã¹ã·ã¥ã´ã¡ã«ããä¸­å¿ã«TCGäºæ¥­ãå¥½èª¿ãæ°æ¥æ¬ãã­ã¬ã¹ãªã³ã°ããã¬ãææ¥HDã«è­²æ¸¡ãç¹å¥å©çãè¨ä¸äºå®ãç´å©çã39ååãã55ååã«ä¸æ¹ä¿®æ­£ã</div>
+        <div class="highlight-item">ã´ã¡ã¤ã¹ã·ã¥ã´ã¡ã«ã: TCGå£²ä¸ãå¤§å¹å¢ï¼Q1ã§é»å­è»¢æï¼</div>
+        <div class="highlight-item">æ°æ¥æ¬ãã­ã¬ã¹å£²å´çãç¹å¥å©çã¨ãã¦è¨ä¸äºå®</div>
+      </div>
+    </div>
+
+    <!-- ãã¼ãã©ã¹ -->
+    <div class="company-card" data-name="ãã¼ãã©ã¹ ç§å ´ç©èª ã«ã¼ã³ãã¡ã¯ããªã¼" data-cats="game" data-release="2026-05-15">
+      <div class="card-header">
+        <div class="company-logo" style="background:#f5f3ff;color:#7c3aed;">ã</div>
+        <div class="card-title">
+          <div class="name">ãã¼ãã©ã¹</div>
+          <div class="ticker">7844 | ã²ã¼ã ã»ã¢ãã¥ã¼ãºã¡ã³ã</div>
+          <div class="badge-row">
+            <span class="badge badge-game">ã²ã¼ã </span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">å£²ä¸æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">380å</div><div class="m-chg up">â +35.8%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">22å</div><div class="m-chg up">â +23.7%</div></div>
+        <div class="metric"><div class="m-label">AMäºæ¥­å£²ä¸</div><div class="m-val">127å</div><div class="m-chg up">â +21.7%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">éå»æé«å£²ä¸ãéæãã³ã³ã·ã¥ã¼ãæ°ä½ãé¾ã®å½ã«ã¼ã³ãã¡ã¯ããªã¼ããç§å ´ç©èªLet'sï¼é¢¨ã®ã°ã©ã³ããã¶ã¼ã«ããå¥½èª¿ãAMäºæ¥­ã§ãã±ã¢ã³ãã¬ã³ããæµ·å¤å±éãé²å±ã</div>
+        <div class="highlight-item">ã³ã³ã·ã¥ã¼ãæ°ä½: é¾ã®å½ã«ã¼ã³ãã¡ã¯ããªã¼ãç§å ´ç©èª Let'sï¼</div>
+        <div class="highlight-item">AMäºæ¥­: ãã±ã¢ã³ãã¬ã³ã å£²ä¸127ååï¼+21.7%ï¼ãæµ·å¤å±éãé²å±</div>
+      </div>
+    </div>
+
+    <!-- å£½å±ï¼ã³ããã­ã¤ï¼ -->
+    <div class="company-card" data-name="ã³ããã­ã¤ å£½å± ãã£ã®ã¥ã¢ ãã©ã¢ãã«" data-cats="toy" data-release="2026-05-13">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fef9c3;color:#a16207;">å£½</div>
+        <div class="card-title">
+          <div class="name">å£½å±ï¼ã³ããã­ã¤ï¼</div>
+          <div class="ticker">7809 | ãã£ã®ã¥ã¢ã»ãã©ã¢ãã«</div>
+          <div class="badge-row">
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge" style="background:#f0fdf4;color:#166534;">éæäºæ³</span>
+            <span class="badge" style="background:#fee2e2;color:#dc2626;">ä¸æ¹ä¿®æ­£</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«(äº)</div><div class="m-val">165å</div><div class="m-chg" style="color:#94a3b8">FY2026/6æ</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç(äº)</div><div class="m-val">8å</div><div class="m-chg dn">â -50.3%</div></div>
+        <div class="metric"><div class="m-label">3Qç´¯è¨å£²ä¸</div><div class="m-val">119å</div><div class="m-chg up">â +å¢å</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼ï¼3Qç´¯è¨ã»éæäºæ³ï¼</div>
+        <div class="detail-text">ç¾å°å¥³ãã©ã¢ãã«å¸å ´ã®ç«¶äºæ¿åã¨ä¸æè£½ååæ³¨ã®ä¸èª¿ã»æãºã¬ã«ããéæäºæ³ãå¤§å¹ä¸æ¹ä¿®æ­£ãè£½é åä¾¡ã»è·é éè³ã»äººä»¶è²»ã®å¢å ãã³ã¹ãå§è¿«è¦å ã</div>
+        <div class="highlight-item">éæäºæ³ãä¸æ¹ä¿®æ­£: å£²ä¸180åâ165åãå¶æ¥­å©ç17åâ8å</div>
+        <div class="highlight-item">ç¾å°å¥³ãã©ã¢ãã«å¸å ´ã§ã®ç«¶äºæ¿åãç¶ã</div>
+      </div>
+    </div>
+
+    <!-- ã¿ã«ã©ããã¼ -->
+    <div class="company-card" data-name="ã¿ã«ã©ããã¼ ããã« ãã¥ã¨ã«ãã¹ã¿ã¼ãº ãã©ã³ã¹ãã©ã¼ãã¼" data-cats="toy" data-release="2026-05-12">
+      <div class="card-header">
+        <div class="company-logo" style="background:#fef3c7;color:#b45309;">ã¿</div>
+        <div class="card-title">
+          <div class="name">ã¿ã«ã©ããã¼</div>
+          <div class="ticker">7867 | ç©å·ã»TCG</div>
+          <div class="badge-row">
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge badge-full">éæ</span>
+            <span class="badge" style="background:#dcfce7;color:#15803d;">å£²ä¸æé«</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">2,704å</div><div class="m-chg up">â +8.1%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">242å</div><div class="m-chg dn">â -2.5%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©çç</div><div class="m-val">9.0%</div><div class="m-chg" style="color:#94a3b8">â</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">å£²ä¸é«ã¯2,704ååã§éå»æé«ãæ´æ°ãããã«ã»ãã¥ã¨ãã»T-SPARKï¼ãã¤ã¿ã¼ã²ããããã¼ï¼ãç½å¼ãä¸æ¹ãæ¦ç¥æè³è²»ç¨ã¨ç±³å½é¢ç¨ã®å½±é¿ã§å¶æ¥­å©çã¯å¾®æ¸ã</div>
+        <div class="highlight-item">ããã«ã»ãã¥ã¨ã«ãã¹ã¿ã¼ãºã»ãã©ã³ã¹ãã©ã¼ãã¼ãå¥½èª¿</div>
+        <div class="highlight-item">ç±³å­ä¼ç¤¾ã§æ¸ææå¤±ãè¨ä¸ãé¢ç¨å½±é¿ãéé¢¨ã«</div>
+      </div>
+    </div>
+
+    <!-- ããããã -->
+    <div class="company-card" data-name="ããããã ä¸çªãã ãã³ãã¤ Switch" data-cats="toy" data-release="2026-05-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#ffe4e6;color:#be123c;">ã</div>
+        <div class="card-title">
+          <div class="name">ããããã</div>
+          <div class="ticker">7552 | ç©å·ã»ã²ã¼ã å¸</div>
+          <div class="badge-row">
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">4,390å</div><div class="m-chg up">â +20.5%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">155å</div><div class="m-chg up">â +33.5%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©çç</div><div class="m-val">3.5%</div><div class="m-chg up">â æ¹å</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">Nintendo Switch 2éè¦ãè¿½ãé¢¨ã«ã²ã¼ã å¸ãæ¡å¤§ãä¸çªããã»ãã©ã¢ãã«ã»ããã¼ã»ã«ãã»ã«ç©å·ãå¥½èª¿ãç©å·ã»ã¢ãã¥ã¼ãºã¡ã³ãäºæ¥­ãã¨ãã«å¤§å¹å¢åå¢çã</div>
+        <div class="highlight-item">Switch 2éè¦è¿½ãé¢¨ã§ã²ã¼ã å¸å£²ä¸ãå¤§å¹æ¡å¤§</div>
+        <div class="highlight-item">ä¸çªããã»ãã©ã¢ãã«ã»ã«ãã»ã«ç©å·ãå¨ã¦å¥½èª¿</div>
+      </div>
+    </div>
+
+    <!-- ããªã¥ã¼ -->
+    <div class="company-card" data-name="ããªã¥ã¼ ã¯ã¬ã¼ã³ã²ã¼ã  ããªã¯ã© ããªã³ãã·ã¼ã«" data-cats="toy" data-release="2026-05-14">
+      <div class="card-header">
+        <div class="company-logo" style="background:#f0fdf4;color:#15803d;">ã</div>
+        <div class="card-title">
+          <div class="name">ããªã¥ã¼</div>
+          <div class="ticker">6238 | ã¢ãã¥ã¼ãºã¡ã³ãã»ç©è²©</div>
+          <div class="badge-row">
+            <span class="badge badge-toy">ãã¤ããã¼</span>
+            <span class="badge badge-full">éæ</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-metrics">
+        <div class="metric"><div class="m-label">å£²ä¸é«</div><div class="m-val">448å</div><div class="m-chg up">â +1.0%</div></div>
+        <div class="metric"><div class="m-label">å¶æ¥­å©ç</div><div class="m-val">33å</div><div class="m-chg up">â +48.1%</div></div>
+        <div class="metric"><div class="m-label">æçµå©ç</div><div class="m-val">21å</div><div class="m-chg up">â +26.6%</div></div>
+      </div>
+      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">â¼ è©³ç´°ãµããªã¼ãå±é</button></div>
+      <div class="card-detail collapsed">
+        <div class="detail-label">æ±ºç®ãµããªã¼</div>
+        <div class="detail-text">ã¯ã¬ã¼ã³ã²ã¼ã æ¯åã»æµ·å¤ç©è²©ãå¥½èª¿ã§ã¢ãã¥ã¼ãºã¡ã³ãäºæ¥­ãå¤§å¹å¢çãããªã³ãã·ã¼ã«æ©äºæ¥­ãåçæ¹åãå£²ä¸ã¯ã»ã¼æ¨ªã°ããªããå©ççãå¤§ããåä¸ã</div>
+        <div class="highlight-item">ã¯ã¬ã¼ã³ã²ã¼ã æ¯åã»æµ·å¤ç©è²©ãå¢çãç½å¼</div>
+        <div class="highlight-item">ããªã³ãã·ã¼ã«ï¼ããªã¯ã©ï¼äºæ¥­ã®åçæ¹å</div>
+      </div>
+    </div>
+
+  </div><!-- /card-grid -->
+  <div class="no-results" id="noResults">è©²å½ããä¼æ¥­ãè¦ã¤ããã¾ããã§ããã</div>
+
+  <div class="source-footer">
+    <strong>åºå¸</strong>: åç¤¾IRè³æã»æ±ºç®ç­ä¿¡ï¼2026å¹´3ææã»2ææã»6ææéæï¼ã
+    <a href="https://gamebiz.jp/" target="_blank">gamebiz.jp</a>ã
+    <a href="https://www.nikkei.com/" target="_blank">æ¥æ¬çµæ¸æ°è</a>ã
+    <a href="https://news.yahoo.co.jp/" target="_blank">Yahoo!ãã¥ã¼ã¹</a>
+    â æ°å¤ã¯åç¤¾å¬å¼IRè³æã«åºã¥ãããã·ã­ã¼ãã»å£½å±ã¯6ææã®ããéæäºæ³å¤ï¼3Qçºè¡¨æç¹ï¼ãæ±æ ã¢ãã¡ã¼ã·ã§ã³ã¯3Qç´¯è¨å¤ã
+    <span style="float:right">æ´æ°: 2026-07-17</span>
+  </div>
 </main>
+
 <script>
-const gL=['任天堂','バンナム','コナミ','カプコン','サンリオ','東宝','スクエニ','東映アニメ'],gV=[98.6,8.6,17.1,15.2,33.9,15.2,-8.3,-7.6];
-const oL=['任天堂','バンナム','コナミ','カプコン','サンリオ','東宝','スクエニ'],oV=[27.5,5.2,33.3,14.5,50.3,5.0,34.9];
-const bc=v=>v.map(x=>x>=0?'rgba(37,99,235,0.72)':'rgba(220,38,38,0.72)');
-const cd={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#94a3b8',font:{size:10}},grid:{color:'#f1f5f9'}},y:{ticks:{color:'#94a3b8',font:{size:10},callback:v=>v+'%'},grid:{color:'#f1f5f9'}}}};
-new Chart(document.getElementById('growthChart'),{type:'bar',data:{labels:gL,datasets:[{data:gV,backgroundColor:bc(gV),borderRadius:5}]},options:cd});
-new Chart(document.getElementById('opChart'),{type:'bar',data:{labels:oL,datasets:[{data:oV,backgroundColor:bc(oV),borderRadius:5}]},options:cd});
-function toggleDetail(btn){const d=btn.closest('.company-card').querySelector('.card-detail');const c=d.classList.toggle('collapsed');btn.textContent=c?'▼ 詳細サマリーを展開':'▲ 詳細サマリーを閉じる';}
-const TODAY=new Date('2026-07-17');let aC='all',aD=7;
-const cards=document.querySelectorAll('.company-card'),sI=document.getElementById('searchInput'),fB=document.querySelectorAll('.filter-btn'),pB=document.querySelectorAll('.period-btn'),nR=document.getElementById('noResults'),rC=document.getElementById('resultsCount'),pBan=document.getElementById('periodBanner'),pC=document.getElementById('periodCount'),pR=document.getElementById('periodRange');
-function fmt(d){return d.getFullYear()+'/'+(d.getMonth()+1).toString().padStart(2,'0')+'/'+d.getDate().toString().padStart(2,'0');}
-function af(){const q=sI.value.toLowerCase().trim(),cut=new Date(TODAY);cut.setDate(cut.getDate()-aD);let v=0,f=0;cards.forEach(c=>{const ms=!q||c.dataset.name.toLowerCase().includes(q),mc=aC==='all'||(c.dataset.cats||'').includes(aC);if(!ms||!mc){c.classList.add('hidden');c.classList.remove('card-dimmed');c.querySelector('.badge-new')?.remove();return;}c.classList.remove('hidden');v++;const rel=c.dataset.release?new Date(c.dataset.release):null,inR=rel&&rel>=cut&&rel<=TODAY;if(inR){c.classList.remove('card-dimmed');f++;if(!c.querySelector('.badge-new')){const nb=document.createElement('span');nb.className='badge badge-new';nb.textContent='NEW';c.querySelector('.badge-row').appendChild(nb);}}else{c.classList.add('card-dimmed');c.querySelector('.badge-new')?.remove();}});rC.textContent=v+'件表示中';nR.style.display=v===0?'block':'none';pBan.style.display='flex';pC.textContent=f;pR.textContent='（'+fmt(cut)+' 〜 '+fmt(TODAY)+'）';}
-sI.addEventListener('input',af);fB.forEach(b=>b.addEventListener('click',()=>{fB.forEach(x=>x.classList.remove('active'));b.classList.add('active');aC=b.dataset.cat;af();}));pB.forEach(b=>b.addEventListener('click',()=>{pB.forEach(x=>x.classList.remove('active'));b.classList.add('active');aD=parseInt(b.dataset.days);af();}));af();
-</script></body></html>
+// ====== CHARTS ======
+const growthLabels = ['ä»»å¤©å ','ãã³ãã ','ã³ãã','ã«ãã³ã³','ãµã³ãªãª','æ±å®','ã¹ã¯ã¨ã','æ±æ ã¢ãã¡','ãã¼ãã©ã¹','ããããã','ã¿ã«ã©ããã¼','ã³ã¼ãã¯ã¢','ããªã¥ã¼','KADOKAWA','OLC'];
+const growthVals   = [98.6, 8.6, 17.1, 15.2, 33.9, 15.2, -8.3, -7.6, 35.8, 20.5, 8.1, 6.3, 1.0, 1.8, 3.7];
+const opLabels = ['ä»»å¤©å ','ãã³ãã ','ã³ãã','ã«ãã³ã³','ãµã³ãªãª','æ±å®','ã¹ã¯ã¨ã','ããªã¥ã¼','ããããã','ãã¼ãã©ã¹','ã³ã¼ãã¯ã¢','ã¿ã«ã©ããã¼','OLC','KADOKAWA'];
+const opVals   = [27.5, 5.2, 33.3, 14.5, 50.3, 5.0, 34.9, 48.1, 33.5, 23.7, 15.7, -2.5, -2.1, -51.3];
+
+function barColors(vals) {
+  return vals.map(v => v >= 0 ? 'rgba(37,99,235,0.72)' : 'rgba(220,38,38,0.72)');
+}
+const chartDefaults = {
+  responsive: true, maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: '#f1f5f9' } },
+    y: { ticks: { color: '#94a3b8', font: { size: 10 }, callback: v => v + '%' }, grid: { color: '#f1f5f9' } }
+  }
+};
+
+new Chart(document.getElementById('growthChart'), {
+  type: 'bar',
+  data: { labels: growthLabels, datasets: [{ data: growthVals, backgroundColor: barColors(growthVals), borderRadius: 5 }] },
+  options: chartDefaults
+});
+new Chart(document.getElementById('opChart'), {
+  type: 'bar',
+  data: { labels: opLabels, datasets: [{ data: opVals, backgroundColor: barColors(opVals), borderRadius: 5 }] },
+  options: chartDefaults
+});
+
+// ====== DETAIL TOGGLE ======
+function toggleDetail(btn) {
+  const detail = btn.closest('.company-card').querySelector('.card-detail');
+  const collapsed = detail.classList.toggle('collapsed');
+  btn.textContent = collapsed ? 'â¼ è©³ç´°ãµããªã¼ãå±é' : 'â² è©³ç´°ãµããªã¼ãéãã';
+}
+
+// ====== FILTER + PERIOD ======
+const TODAY = new Date('2026-07-17');
+let activeCategory = 'all';
+let activeDays = 7;
+
+const cards = document.querySelectorAll('.company-card');
+const searchInput = document.getElementById('searchInput');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const periodBtns = document.querySelectorAll('.period-btn');
+const noResults = document.getElementById('noResults');
+const resultsCount = document.getElementById('resultsCount');
+const periodBanner = document.getElementById('periodBanner');
+const periodCount = document.getElementById('periodCount');
+const periodRange = document.getElementById('periodRange');
+
+function fmt(d) { return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`; }
+
+function applyFilters() {
+  const q = searchInput.value.toLowerCase().trim();
+  const cutoff = new Date(TODAY);
+  cutoff.setDate(cutoff.getDate() - activeDays);
+
+  let visible = 0, fresh = 0;
+  cards.forEach(card => {
+    const matchSearch = !q || card.dataset.name.toLowerCase().includes(q);
+    const matchCat = activeCategory === 'all' || (card.dataset.cats||'').includes(activeCategory);
+    if (!matchSearch || !matchCat) {
+      card.classList.add('hidden');
+      card.classList.remove('card-dimmed');
+      card.querySelector('.badge-new')?.remove();
+      return;
+    }
+    card.classList.remove('hidden');
+    visible++;
+    const rel = card.dataset.release ? new Date(card.dataset.release) : null;
+    const inRange = rel && rel >= cutoff && rel <= TODAY;
+    if (inRange) {
+      card.classList.remove('card-dimmed');
+      fresh++;
+      if (!card.querySelector('.badge-new')) {
+        const nb = document.createElement('span');
+        nb.className = 'badge badge-new';
+        nb.textContent = 'NEW';
+        card.querySelector('.badge-row').appendChild(nb);
+      }
+    } else {
+      card.classList.add('card-dimmed');
+      card.querySelector('.badge-new')?.remove();
+    }
+  });
+
+  resultsCount.textContent = visible + 'ä»¶è¡¨ç¤ºä¸­';
+  noResults.style.display = visible === 0 ? 'block' : 'none';
+  periodBanner.style.display = 'flex';
+  periodCount.textContent = fresh;
+  periodRange.textContent = `ï¼${fmt(cutoff)} ã ${fmt(TODAY)}ï¼`;
+}
+
+searchInput.addEventListener('input', applyFilters);
+filterBtns.forEach(btn => btn.addEventListener('click', () => {
+  filterBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeCategory = btn.dataset.cat;
+  applyFilters();
+}));
+periodBtns.forEach(btn => btn.addEventListener('click', () => {
+  periodBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeDays = parseInt(btn.dataset.days);
+  applyFilters();
+}));
+
+applyFilters();
+</script>
+</body>
+</html>
