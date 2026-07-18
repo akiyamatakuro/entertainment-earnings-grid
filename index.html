@@ -3,805 +3,807 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENTERTAINMENT EARNINGS GRID — 2026年7月17日</title>
+<title>ENTERTAINMENT EARNINGS GRID — 2026年7月18日</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
 <style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #f5f7fb; color: #1a1f36; font-family: 'Segoe UI', 'Noto Sans JP', sans-serif; min-height: 100vh; font-size: 14px; }
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f5f7fb; color: #1a1f36; font-family: 'Segoe UI', 'Noto Sans JP', sans-serif; min-height: 100vh; font-size: 14px; }
 
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, #1a2a6c, #2563eb);
-    padding: 18px 28px 14px;
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-  }
-  header h1 { font-size: 19px; font-weight: 800; letter-spacing: 2px; color: #fff; }
-  header h1 span { color: #93c5fd; }
-  header .sub { font-size: 11px; color: #bfdbfe; margin-top: 3px; }
-  .updated-badge { background: #3b82f6; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
-  .header-right { text-align: right; font-size: 11px; color: #bfdbfe; }
+/* HEADER */
+header {
+background: linear-gradient(135deg, #1a2a6c, #2563eb);
+padding: 18px 28px 14px;
+display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+header h1 { font-size: 19px; font-weight: 800; letter-spacing: 2px; color: #fff; }
+header h1 span { color: #93c5fd; }
+header .sub { font-size: 11px; color: #bfdbfe; margin-top: 3px; }
+.updated-badge { background: #3b82f6; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+.header-right { text-align: right; font-size: 11px; color: #bfdbfe; }
 
-  /* CONTROLS */
-  .controls {
-    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-    padding: 12px 28px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10;
-  }
-  .search-box {
-    flex: 1; min-width: 180px;
-    background: #f8faff; border: 1px solid #cbd5e1; border-radius: 8px;
-    padding: 7px 12px; color: #1a1f36; font-size: 13px; outline: none; transition: border-color 0.2s;
-  }
-  .search-box:focus { border-color: #3b82f6; }
-  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
-  .filter-btn {
-    padding: 5px 13px; border-radius: 20px; border: 1px solid #cbd5e1;
-    background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
-  }
-  .filter-btn:hover { border-color: #3b82f6; color: #3b82f6; }
-  .filter-btn.active { background: #eff6ff; border-color: #3b82f6; color: #2563eb; font-weight: 600; }
-  .filter-btn[data-cat="game"].active  { background:#eff6ff; border-color:#3b82f6; color:#1d4ed8; }
-  .filter-btn[data-cat="toy"].active   { background:#fffbeb; border-color:#f59e0b; color:#b45309; }
-  .filter-btn[data-cat="anime"].active { background:#faf5ff; border-color:#9333ea; color:#7e22ce; }
-  .filter-btn[data-cat="park"].active  { background:#fff1f2; border-color:#f43f5e; color:#be123c; }
+/* CONTROLS */
+.controls {
+display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+padding: 12px 28px; background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 10;
+}
+.search-box {
+flex: 1; min-width: 180px;
+background: #f8faff; border: 1px solid #cbd5e1; border-radius: 8px;
+padding: 7px 12px; color: #1a1f36; font-size: 13px; outline: none; transition: border-color 0.2s;
+}
+.search-box:focus { border-color: #3b82f6; }
+.filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-btn {
+padding: 5px 13px; border-radius: 20px; border: 1px solid #cbd5e1;
+background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
+}
+.filter-btn:hover { border-color: #3b82f6; color: #3b82f6; }
+.filter-btn.active { background: #eff6ff; border-color: #3b82f6; color: #2563eb; font-weight: 600; }
+.filter-btn[data-cat="game"].active { background:#eff6ff; border-color:#3b82f6; color:#1d4ed8; }
+.filter-btn[data-cat="toy"].active { background:#fffbeb; border-color:#f59e0b; color:#b45309; }
+.filter-btn[data-cat="anime"].active { background:#faf5ff; border-color:#9333ea; color:#7e22ce; }
+.filter-btn[data-cat="park"].active { background:#fff1f2; border-color:#f43f5e; color:#be123c; }
 
-  /* PERIOD */
-  .period-label { font-size: 11px; color: #64748b; white-space: nowrap; }
-  .period-btn {
-    padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1;
-    background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
-  }
-  .period-btn.active { background: #f5f3ff; border-color: #8b5cf6; color: #7c3aed; font-weight: 600; }
+/* PERIOD */
+.period-label { font-size: 11px; color: #64748b; white-space: nowrap; }
+.period-btn {
+padding: 5px 12px; border-radius: 20px; border: 1px solid #cbd5e1;
+background: #f8faff; color: #64748b; font-size: 12px; cursor: pointer; transition: all 0.18s;
+}
+.period-btn.active { background: #f5f3ff; border-color: #8b5cf6; color: #7c3aed; font-weight: 600; }
 
-  /* MAIN */
-  main { padding: 20px 28px; max-width: 1300px; margin: 0 auto; }
+/* MAIN */
+main { padding: 20px 28px; max-width: 1300px; margin: 0 auto; }
 
-  /* PERIOD BANNER */
-  .period-banner {
-    display: none; margin-bottom: 16px; padding: 10px 16px; border-radius: 8px; font-size: 12px;
-    background: #f5f3ff; border: 1px solid #c4b5fd; color: #6d28d9;
-    align-items: center; gap: 8px;
-  }
-  .period-banner .count { font-weight: 800; font-size: 17px; color: #4c1d95; }
+/* PERIOD BANNER */
+.period-banner {
+display: none; margin-bottom: 16px; padding: 10px 16px; border-radius: 8px; font-size: 12px;
+background: #f5f3ff; border: 1px solid #c4b5fd; color: #6d28d9;
+align-items: center; gap: 8px;
+}
+.period-banner .count { font-weight: 800; font-size: 17px; color: #4c1d95; }
 
-  /* KPI */
-  .kpi-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px,1fr)); gap: 12px; margin-bottom: 22px; }
-  .kpi-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  .kpi-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
-  .kpi-val { font-size: 21px; font-weight: 800; margin-top: 4px; color: #1a1f36; }
-  .kpi-chg { font-size: 11px; margin-top: 3px; }
-  .up { color: #059669; } .dn { color: #dc2626; }
+/* KPI */
+.kpi-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px,1fr)); gap: 12px; margin-bottom: 22px; }
+.kpi-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.kpi-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+.kpi-val { font-size: 21px; font-weight: 800; margin-top: 4px; color: #1a1f36; }
+.kpi-chg { font-size: 11px; margin-top: 3px; }
+.up { color: #059669; } .dn { color: #dc2626; }
 
-  /* CHARTS */
-  .chart-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; }
-  .chart-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-  .chart-card h3 { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-  .chart-wrap { position: relative; height: 200px; }
+/* CHARTS */
+.chart-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; }
+.chart-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.chart-card h3 { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.chart-wrap { position: relative; height: 200px; }
 
-  /* GRID HEADER */
-  .grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-  .grid-header h2 { font-size: 14px; font-weight: 700; color: #1a1f36; }
-  .results-count { font-size: 12px; color: #94a3b8; }
+/* GRID HEADER */
+.grid-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.grid-header h2 { font-size: 14px; font-weight: 700; color: #1a1f36; }
+.results-count { font-size: 12px; color: #94a3b8; }
 
-  /* CARDS */
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-  .company-card {
-    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
-    overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, opacity 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  }
-  .company-card:hover { border-color: #3b82f6; box-shadow: 0 4px 14px rgba(59,130,246,0.12); }
-  .company-card.hidden { display: none; }
-  .company-card.card-dimmed { opacity: 0.38; }
+/* CARDS */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.company-card {
+background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+overflow: hidden; transition: border-color 0.18s, box-shadow 0.18s, opacity 0.2s;
+box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.company-card:hover { border-color: #3b82f6; box-shadow: 0 4px 14px rgba(59,130,246,0.12); }
+.company-card.hidden { display: none; }
+.company-card.card-dimmed { opacity: 0.38; }
 
-  .card-header { padding: 14px 16px 10px; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid #f1f5f9; }
-  .company-logo { width: 40px; height: 40px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; flex-shrink: 0; }
-  .card-title .name { font-size: 13px; font-weight: 700; color: #1a1f36; }
-  .card-title .ticker { font-size: 10px; color: #94a3b8; margin-top: 1px; }
-  .badge-row { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
-  .badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
-  .badge-game  { background: #dbeafe; color: #1d4ed8; }
-  .badge-toy   { background: #fef3c7; color: #b45309; }
-  .badge-anime { background: #f3e8ff; color: #7e22ce; }
-  .badge-park  { background: #ffe4e6; color: #be123c; }
-  .badge-full  { background: #e0f2fe; color: #0369a1; }
-  .badge-new   { background: #f5f3ff; color: #7c3aed; font-weight: 800; }
+.card-header { padding: 14px 16px 10px; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid #f1f5f9; }
+.company-logo { width: 40px; height: 40px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; flex-shrink: 0; }
+.card-title .name { font-size: 13px; font-weight: 700; color: #1a1f36; }
+.card-title .ticker { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+.badge-row { display: flex; gap: 5px; margin-top: 5px; flex-wrap: wrap; }
+.badge { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+.badge-game { background: #dbeafe; color: #1d4ed8; }
+.badge-toy { background: #fef3c7; color: #b45309; }
+.badge-anime { background: #f3e8ff; color: #7e22ce; }
+.badge-park { background: #ffe4e6; color: #be123c; }
+.badge-full { background: #e0f2fe; color: #0369a1; }
+.badge-new { background: #f5f3ff; color: #7c3aed; font-weight: 800; }
 
-  .card-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #f1f5f9; }
-  .metric { background: #fff; padding: 10px 12px; }
-  .m-label { font-size: 9px; color: #94a3b8; margin-bottom: 3px; text-transform: uppercase; }
-  .m-val { font-size: 14px; font-weight: 700; color: #1a1f36; }
-  .m-chg { font-size: 10px; margin-top: 2px; }
+.card-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #f1f5f9; }
+.metric { background: #fff; padding: 10px 12px; }
+.m-label { font-size: 9px; color: #94a3b8; margin-bottom: 3px; text-transform: uppercase; }
+.m-val { font-size: 14px; font-weight: 700; color: #1a1f36; }
+.m-chg { font-size: 10px; margin-top: 2px; }
 
-  .card-footer { padding: 8px 14px; }
-  .expand-btn {
-    width: 100%; background: #f8faff; border: 1px solid #e2e8f0; color: #64748b;
-    border-radius: 6px; padding: 5px; font-size: 11px; cursor: pointer; transition: all 0.18s;
-  }
-  .expand-btn:hover { border-color: #3b82f6; color: #2563eb; background: #eff6ff; }
-  .card-detail { padding: 12px 16px 14px; border-top: 1px solid #f1f5f9; }
-  .card-detail.collapsed { display: none; }
-  .detail-label { font-size: 10px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
-  .detail-text { font-size: 12px; color: #374151; line-height: 1.7; }
-  .highlight-item { margin-top: 7px; padding: 7px 10px; background: #eff6ff; border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 11px; color: #1e40af; }
+.card-footer { padding: 8px 14px; }
+.expand-btn {
+width: 100%; background: #f8faff; border: 1px solid #e2e8f0; color: #64748b;
+border-radius: 6px; padding: 5px; font-size: 11px; cursor: pointer; transition: all 0.18s;
+}
+.expand-btn:hover { border-color: #3b82f6; color: #2563eb; background: #eff6ff; }
+.card-detail { padding: 12px 16px 14px; border-top: 1px solid #f1f5f9; }
+.card-detail.collapsed { display: none; }
+.detail-label { font-size: 10px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+.detail-text { font-size: 12px; color: #374151; line-height: 1.7; }
+.highlight-item { margin-top: 7px; padding: 7px 10px; background: #eff6ff; border-left: 3px solid #3b82f6; border-radius: 4px; font-size: 11px; color: #1e40af; }
 
-  .no-results { text-align: center; padding: 50px 20px; color: #94a3b8; font-size: 13px; display: none; }
-  .source-footer { margin-top: 36px; padding: 14px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #94a3b8; line-height: 1.8; }
-  .source-footer a { color: #3b82f6; text-decoration: none; }
+.no-results { text-align: center; padding: 50px 20px; color: #94a3b8; font-size: 13px; display: none; }
+.source-footer { margin-top: 36px; padding: 14px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #94a3b8; line-height: 1.8; }
+.source-footer a { color: #3b82f6; text-decoration: none; }
 
-  @media (max-width: 700px) {
-    header, .controls, main { padding-left: 14px; padding-right: 14px; }
-    .chart-section { grid-template-columns: 1fr; }
-    .card-grid { grid-template-columns: 1fr; }
-  }
+@media (max-width: 700px) {
+header, .controls, main { padding-left: 14px; padding-right: 14px; }
+.chart-section { grid-template-columns: 1fr; }
+.card-grid { grid-template-columns: 1fr; }
+}
 
-  .card-period {
-    font-size: 9px; color: #94a3b8; padding: 3px 14px 3px;
-    background: #f8faff; border-bottom: 1px solid #f1f5f9;
-    text-align: right; letter-spacing: 0.3px;
-  }
-  .card-period span { font-weight: 600; color: #64748b; }
+.card-period {
+font-size: 9px; color: #94a3b8; padding: 3px 14px 3px;
+background: #f8faff; border-bottom: 1px solid #f1f5f9;
+text-align: right; letter-spacing: 0.3px;
+}
+.card-period span { font-weight: 600; color: #64748b; }
 </style>
 </head>
 <body>
 
 <header>
-  <div>
-    <h1>ENTERTAINMENT <span>EARNINGS GRID</span></h1>
-    <div class="sub">国内エンタメ業界 決算ダッシュボード — FY2026 通期</div>
-  </div>
-  <div class="header-right">
-    <div class="updated-badge">UPDATED</div><br>
-    2026年7月17日<br>
-    <span style="font-size:10px">データ: 各社IR資料・ニュース記事</span>
-  </div>
+<div>
+<h1>ENTERTAINMENT <span>EARNINGS GRID</span></h1>
+<div class="sub">国内エンタメ業界 決算ダッシュボード — FY2026 通期</div>
+</div>
+<div class="header-right">
+<div class="updated-badge">UPDATED</div><br>
+2026年7月18日<br>
+<span style="font-size:10px">データ: 各社IR資料・ニュース記事</span>
+</div>
 </header>
 
 <div class="controls">
-  <input class="search-box" type="text" id="searchInput" placeholder="🔍  企業名・セクターで検索...">
-  <div class="filter-group">
-    <button class="filter-btn active" data-cat="all">すべて</button>
-    <button class="filter-btn" data-cat="game">ゲーム</button>
-    <button class="filter-btn" data-cat="toy">トイホビー</button>
-    <button class="filter-btn" data-cat="anime">アニメ・映像</button>
-    <button class="filter-btn" data-cat="park">テーマパーク</button>
-  </div>
-  <div style="margin-left:auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
-    <span class="period-label">📅 情報ソース期間:</span>
-    <button class="period-btn active" data-days="7">1週間</button>
-    <button class="period-btn" data-days="14">2週間</button>
-    <button class="period-btn" data-days="30">1ヶ月</button>
-    <button class="period-btn" data-days="90">3ヶ月</button>
-  </div>
+<input class="search-box" type="text" id="searchInput" placeholder="🔍 企業名・セクターで検索...">
+<div class="filter-group">
+<button class="filter-btn active" data-cat="all">すべて</button>
+<button class="filter-btn" data-cat="game">ゲーム</button>
+<button class="filter-btn" data-cat="toy">トイホビー</button>
+<button class="filter-btn" data-cat="anime">アニメ・映像</button>
+<button class="filter-btn" data-cat="park">テーマパーク</button>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
+<span class="period-label">📅 情報ソース期間:</span>
+<button class="period-btn active" data-days="7">1週間</button>
+<button class="period-btn" data-days="14">2週間</button>
+<button class="period-btn" data-days="30">1ヶ月</button>
+<button class="period-btn" data-days="90">3ヶ月</button>
+</div>
 </div>
 
 <main>
 
-  <div class="period-banner" id="periodBanner">
-    📅 選択期間内の新規発表: <span class="count" id="periodCount">0</span>件
-    <span id="periodRange" style="color:#7c3aed;font-size:11px;"></span>
-    <span style="margin-left:auto;font-size:10px;color:#8b5cf6;">期間外はグレーアウト</span>
-  </div>
+<div class="period-banner" id="periodBanner">
+📅 選択期間内の新規発表: <span class="count" id="periodCount">0</span>件
+<span id="periodRange" style="color:#7c3aed;font-size:11px;"></span>
+<span style="margin-left:auto;font-size:10px;color:#8b5cf6;">期間外はグレーアウト</span>
+</div>
 
-  <!-- KPI BAR -->
-  <div class="kpi-bar">
-    <div class="kpi-card">
-      <div class="kpi-label">集計企業数</div>
-      <div class="kpi-val">18社</div>
-      <div class="kpi-chg" style="color:#94a3b8">FY2026（2社は予想）</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">最高成長企業</div>
-      <div class="kpi-val" style="font-size:17px">任天堂</div>
-      <div class="kpi-chg up">↑ 売上 +98.6%</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">最高利益成長</div>
-      <div class="kpi-val" style="font-size:17px">サンリオ</div>
-      <div class="kpi-chg up">↑ 営業利益 +50.3%</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">注目IP</div>
-      <div class="kpi-val" style="font-size:16px">ガンダム</div>
-      <div class="kpi-chg up">↑ 2,543億円 (+66%)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">赤字転落</div>
-      <div class="kpi-val" style="font-size:17px">セガサミー</div>
-      <div class="kpi-chg dn">↓ 最終 -57億円</div>
-    </div>
-  </div>
+<!-- KPI BAR -->
+<div class="kpi-bar">
+<div class="kpi-card">
+<div class="kpi-label">集計企業数</div>
+<div class="kpi-val">18社</div>
+<div class="kpi-chg" style="color:#94a3b8">FY2026（2社は予想）</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">最高成長企業</div>
+<div class="kpi-val" style="font-size:17px">任天堂</div>
+<div class="kpi-chg up">↑ 売上 +98.6%</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">最高利益成長</div>
+<div class="kpi-val" style="font-size:17px">サンリオ</div>
+<div class="kpi-chg up">↑ 営業利益 +50.3%</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">注目IP</div>
+<div class="kpi-val" style="font-size:16px">ガンダム</div>
+<div class="kpi-chg up">↑ 2,543億円 (+66%)</div>
+</div>
+<div class="kpi-card">
+<div class="kpi-label">赤字転落</div>
+<div class="kpi-val" style="font-size:17px">セガサミー</div>
+<div class="kpi-chg dn">↓ 最終 -57億円</div>
+</div>
+</div>
 
-  <!-- CHARTS -->
-  <div class="chart-section">
-    <div class="chart-card">
-      <h3>売上高成長率（前年比 %）</h3>
-      <div class="chart-wrap"><canvas id="growthChart"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h3>営業利益成長率（前年比 %）</h3>
-      <div class="chart-wrap"><canvas id="opChart"></canvas></div>
-    </div>
-  </div>
+<!-- CHARTS -->
+<div class="chart-section">
+<div class="chart-card">
+<h3>売上高成長率（前年比 %）</h3>
+<div class="chart-wrap"><canvas id="growthChart"></canvas></div>
+</div>
+<div class="chart-card">
+<h3>営業利益成長率（前年比 %）</h3>
+<div class="chart-wrap"><canvas id="opChart"></canvas></div>
+</div>
+</div>
 
-  <!-- GRID HEADER -->
-  <div class="grid-header">
-    <h2>企業別 決算カード</h2>
-    <span class="results-count" id="resultsCount">9件表示中</span>
-  </div>
+<!-- GRID HEADER -->
+<div class="grid-header">
+<h2>企業別 決算カード</h2>
+<span class="results-count" id="resultsCount">18件表示中</span>
+</div>
 
-  <div class="card-grid" id="cardGrid">
+<div class="card-grid" id="cardGrid">
 
-    <!-- 任天堂 -->
-    <div class="company-card" data-name="任天堂" data-cats="game" data-release="2026-05-08">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fee2e2;color:#dc2626;">任</div>
-        <div class="card-title">
-          <div class="name">任天堂</div>
-          <div class="ticker">7974 | ゲーム</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">2兆3,131億</div><div class="m-chg up">↑ +98.6%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">3,601億</div><div class="m-chg up">↑ +27.5%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">4,241億</div><div class="m-chg up">↑ +52.1%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">Nintendo Switch 2が2025年6月に発売。初年度販売台数1,986万台、ソフト4,871万本を達成し、全カテゴリーが増収増益。</div>
-        <div class="highlight-item">Switch 2 初年度販売台数: 1,986万台</div>
-        <div class="highlight-item">ソフト販売本数: 4,871万本</div>
-      </div>
-    </div>
+<!-- 任天堂 -->
+<div class="company-card" data-name="任天堂" data-cats="game" data-release="2026-05-08">
+<div class="card-header">
+<div class="company-logo" style="background:#fee2e2;color:#dc2626;">任</div>
+<div class="card-title">
+<div class="name">任天堂</div>
+<div class="ticker">7974 | ゲーム</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">2兆3,131億</div><div class="m-chg up">↑ +98.6%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">3,601億</div><div class="m-chg up">↑ +27.5%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">4,241億</div><div class="m-chg up">↑ +52.1%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">Nintendo Switch 2が2025年6月に発売。初年度販売台数1,986万台、ソフト4,871万本を達成し、全カテゴリーが増収増益。</div>
+<div class="highlight-item">Switch 2 初年度販売台数: 1,986万台</div>
+<div class="highlight-item">ソフト販売本数: 4,871万本</div>
+</div>
+</div>
 
-    <!-- バンダイナムコ -->
-    <div class="company-card" data-name="バンダイナムコ" data-cats="game toy anime" data-release="2026-05-13">
-      <div class="card-header">
-        <div class="company-logo" style="background:#dbeafe;color:#1d4ed8;">バ</div>
-        <div class="card-title">
-          <div class="name">バンダイナムコHD</div>
-          <div class="ticker">7832 | ゲーム・トイホビー・アニメ</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge badge-anime">アニメ</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">1兆3,482億</div><div class="m-chg up">↑ +8.6%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,895億</div><div class="m-chg up">↑ +5.2%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,407億</div><div class="m-chg up">↑ +8.8%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">売上高・営業利益ともに過去最高。ガンダムIPが前期比+1,008億円の2,543億円に急拡大。映像作品・大阪万博出展が相乗効果。</div>
-        <div class="highlight-item">ガンダムIP売上高: 2,543億円（前期1,535億円 → +66%）</div>
-        <div class="highlight-item">累計売上高1兆円を初めて突破（3Q単独）</div>
-      </div>
-    </div>
+<!-- バンダイナムコ -->
+<div class="company-card" data-name="バンダイナムコ" data-cats="game toy anime" data-release="2026-05-13">
+<div class="card-header">
+<div class="company-logo" style="background:#dbeafe;color:#1d4ed8;">バ</div>
+<div class="card-title">
+<div class="name">バンダイナムコHD</div>
+<div class="ticker">7832 | ゲーム・トイホビー・アニメ</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge badge-anime">アニメ</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">1兆3,482億</div><div class="m-chg up">↑ +8.6%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,895億</div><div class="m-chg up">↑ +5.2%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,407億</div><div class="m-chg up">↑ +8.8%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">売上高・営業利益ともに過去最高。ガンダムIPが前期比+1,008億円の2,543億円に急拡大。映像作品・大阪万博出展が相乗効果。</div>
+<div class="highlight-item">ガンダムIP売上高: 2,543億円（前期1,535億円 → +66%）</div>
+<div class="highlight-item">累計売上高1兆円を初めて突破（3Q単独）</div>
+</div>
+</div>
 
-    <!-- コナミグループ -->
-    <div class="company-card" data-name="コナミ" data-cats="game" data-release="2026-05-15">
-      <div class="card-header">
-        <div class="company-logo" style="background:#ffe4e6;color:#e11d48;">コ</div>
-        <div class="card-title">
-          <div class="name">コナミグループ</div>
-          <div class="ticker">9766 | ゲーム・スポーツ</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">3期連続最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">4,937億</div><div class="m-chg up">↑ +17.1%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,359億</div><div class="m-chg up">↑ +33.3%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,000億</div><div class="m-chg up">↑ +33.9%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">全指標で3期連続過去最高を更新。デジタル・スポーツ・アミューズメント事業が安定成長。eスポーツとリアルイベント連携も収益に貢献。</div>
-        <div class="highlight-item">営業利益率: 約27.5%（業界最高水準）</div>
-      </div>
-    </div>
+<!-- コナミグループ -->
+<div class="company-card" data-name="コナミ" data-cats="game" data-release="2026-05-15">
+<div class="card-header">
+<div class="company-logo" style="background:#ffe4e6;color:#e11d48;">コ</div>
+<div class="card-title">
+<div class="name">コナミグループ</div>
+<div class="ticker">9766 | ゲーム・スポーツ</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">3期連続最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">4,937億</div><div class="m-chg up">↑ +17.1%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,359億</div><div class="m-chg up">↑ +33.3%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">1,000億</div><div class="m-chg up">↑ +33.9%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">全指標で3期連続過去最高を更新。デジタル・スポーツ・アミューズメント事業が安定成長。eスポーツとリアルイベント連携も収益に貢献。</div>
+<div class="highlight-item">営業利益率: 約27.5%（業界最高水準）</div>
+</div>
+</div>
 
-    <!-- カプコン -->
-    <div class="company-card" data-name="カプコン" data-cats="game" data-release="2026-05-09">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fef3c7;color:#b45309;">カ</div>
-        <div class="card-title">
-          <div class="name">カプコン</div>
-          <div class="ticker">9697 | ゲーム</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">1,954億</div><div class="m-chg up">↑ +15.2%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">753億</div><div class="m-chg up">↑ +14.5%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +12.7%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">連結売上高・営業利益ともに過去最高。バイオハザード・モンスターハンターシリーズが海外で堅調。DLC収益も拡大。</div>
-        <div class="highlight-item">営業利益率: 約38.5%（安定した高収益体質）</div>
-        <div class="highlight-item">海外売上比率が国内を上回る</div>
-      </div>
-    </div>
+<!-- カプコン -->
+<div class="company-card" data-name="カプコン" data-cats="game" data-release="2026-05-09">
+<div class="card-header">
+<div class="company-logo" style="background:#fef3c7;color:#b45309;">カ</div>
+<div class="card-title">
+<div class="name">カプコン</div>
+<div class="ticker">9697 | ゲーム</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">1,954億</div><div class="m-chg up">↑ +15.2%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">753億</div><div class="m-chg up">↑ +14.5%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +12.7%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">連結売上高・営業利益ともに過去最高。バイオハザード・モンスターハンターシリーズが海外で堅調。DLC収益も拡大。13期連続営業増益を達成。</div>
+<div class="highlight-item">営業利益率: 約38.5%（安定した高収益体質）</div>
+<div class="highlight-item">海外売上比率が国内を上回る</div>
+</div>
+</div>
 
-    <!-- スクウェアエニックス -->
-    <div class="company-card" data-name="スクウェアエニックス スクエニ" data-cats="game anime" data-release="2026-05-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#f1f5f9;color:#475569;">ス</div>
-        <div class="card-title">
-          <div class="name">スクウェア・エニックスHD</div>
-          <div class="ticker">9684 | ゲーム・アニメ</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-anime">アニメ</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">2,977億</div><div class="m-chg dn">↓ -8.3%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">547億</div><div class="m-chg up">↑ +34.9%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">296億</div><div class="m-chg up">↑ +21.3%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">「量から質」戦略転換が奏功。売上減も営業利益は+34.9%と大幅増益。DQシリーズ新作・ライツ収入が寄与。</div>
-        <div class="highlight-item">営業利益率 約18.4%（大幅改善）</div>
-        <div class="highlight-item">2027/3期予想: 売上+0.1%、営業利益-10.5%</div>
-      </div>
-    </div>
+<!-- スクウェアエニックス -->
+<div class="company-card" data-name="スクウェアエニックス スクエニ" data-cats="game anime" data-release="2026-05-14">
+<div class="card-header">
+<div class="company-logo" style="background:#f1f5f9;color:#475569;">ス</div>
+<div class="card-title">
+<div class="name">スクウェア・エニックスHD</div>
+<div class="ticker">9684 | ゲーム・アニメ</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-anime">アニメ</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">2,977億</div><div class="m-chg dn">↓ -8.3%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">547億</div><div class="m-chg up">↑ +34.9%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">296億</div><div class="m-chg up">↑ +21.3%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">「量から質」戦略転換が奏功。売上減、営業利益は+34.9%と大幅増益。DQシリーズ新作・ライツ収入が寄与。</div>
+<div class="highlight-item">営業利益率 約18.4%（大幅改善）</div>
+<div class="highlight-item">2027/3期予想: 売上+0.1%、営業利益-10.5%</div>
+</div>
+</div>
 
-    <!-- セガサミー -->
-    <div class="company-card" data-name="セガサミー セガ" data-cats="game park" data-release="2026-05-12">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fff1f2;color:#e11d48;">セ</div>
-        <div class="card-title">
-          <div class="name">セガサミーHD</div>
-          <div class="ticker">6460 | ゲーム・テーマパーク</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-park">テーマパーク</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#fee2e2;color:#dc2626;">最終赤字</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">4,875億</div><div class="m-chg" style="color:#94a3b8">—</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">471億</div><div class="m-chg" style="color:#94a3b8">—</div></div>
-        <div class="metric"><div class="m-label">最終損益</div><div class="m-val dn">-57億</div><div class="m-chg dn">↓ 赤字転落</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">Rovio（313億円）・Stakelogic（187億円）の減損損失計上により最終赤字転落。「Super Game」構想は中止。</div>
-        <div class="highlight-item">Rovio(フィンランド)減損損失: 313億円</div>
-        <div class="highlight-item">「Super Game」構想中止を発表</div>
-      </div>
-    </div>
+<!-- セガサミー -->
+<div class="company-card" data-name="セガサミー セガ" data-cats="game park" data-release="2026-05-12">
+<div class="card-header">
+<div class="company-logo" style="background:#fff1f2;color:#e11d48;">セ</div>
+<div class="card-title">
+<div class="name">セガサミーHD</div>
+<div class="ticker">6460 | ゲーム・テーマパーク</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-park">テーマパーク</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#fee2e2;color:#dc2626;">最終赤字</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">4,875億</div><div class="m-chg up">↑ +13.7%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">471億</div><div class="m-chg dn">↓ -2.1%</div></div>
+<div class="metric"><div class="m-label">最終損益</div><div class="m-val dn">-57億</div><div class="m-chg dn">↓ 赤字転落</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">Rovio（313億円）・Stakelogic（187億円）の減損損失計上により最終赤字転落。「Super Game」構想は中止。</div>
+<div class="highlight-item">Rovio(フィンランド)減損損失: 313億円</div>
+<div class="highlight-item">「Super Game」構想中止を発表</div>
+</div>
+</div>
 
-    <!-- 東宝 -->
-    <div class="company-card" data-name="東宝" data-cats="anime" data-release="2026-04-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#f3e8ff;color:#9333ea;">東</div>
-        <div class="card-title">
-          <div class="name">東宝</div>
-          <div class="ticker">9602 | 映画・アニメ・演劇</div>
-          <div class="badge-row">
-            <span class="badge badge-anime">アニメ・映像</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">営業収入</div><div class="m-val">3,607億</div><div class="m-chg up">↑ +15.2%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">679億</div><div class="m-chg up">↑ +5.0%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">517億</div><div class="m-chg up">↑ +19.4%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">劇場版「鬼滅の刃」・「国宝」（22年ぶり実写記録更新）メガヒット。「コナン」「チェンソーマン」も好調。FY2026/2期で過去最高水準。</div>
-        <div class="highlight-item">「国宝」：22年ぶりに実写映画の国内興収記録を更新</div>
-      </div>
-    </div>
+<!-- 東宝 -->
+<div class="company-card" data-name="東宝" data-cats="anime" data-release="2026-04-14">
+<div class="card-header">
+<div class="company-logo" style="background:#f3e8ff;color:#9333ea;">東</div>
+<div class="card-title">
+<div class="name">東宝</div>
+<div class="ticker">9602 | 映画・アニメ・演劇</div>
+<div class="badge-row">
+<span class="badge badge-anime">アニメ・映像</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上 (FY2026/2)</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">営業収入</div><div class="m-val">3,607億</div><div class="m-chg up">↑ +15.2%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">679億</div><div class="m-chg up">↑ +5.0%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">517億</div><div class="m-chg up">↑ +19.4%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">劇場版「鬼滅の刃」・「国宝」（22年ぶり実写記録更新）メガヒット。「コナン」「チェンソーマン」も好調。FY2026/2期で過去最高水準。</div>
+<div class="highlight-item">「国宝」：22年ぶりに実写映画の国内興収記録を更新</div>
+</div>
+</div>
 
-    <!-- サンリオ -->
-    <div class="company-card" data-name="サンリオ" data-cats="toy park anime" data-release="2026-05-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fce7f3;color:#be185d;">サ</div>
-        <div class="card-title">
-          <div class="name">サンリオ</div>
-          <div class="ticker">8136 | キャラクター・テーマパーク</div>
-          <div class="badge-row">
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge badge-park">テーマパーク</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">1,941億</div><div class="m-chg up">↑ +33.9%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">779億</div><div class="m-chg up">↑ +50.3%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +30.9%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">全指標で過去最高を更新。国内物販・テーマパーク好調。北米・中国・韓国・台湾でのライセンス収入が急拡大。</div>
-        <div class="highlight-item">営業利益成長率+50.3%（18社中最高）</div>
-      </div>
-    </div>
+<!-- サンリオ -->
+<div class="company-card" data-name="サンリオ" data-cats="toy park anime" data-release="2026-06-23">
+<div class="card-header">
+<div class="company-logo" style="background:#fce7f3;color:#be185d;">サ</div>
+<div class="card-title">
+<div class="name">サンリオ</div>
+<div class="ticker">8136 | キャラクター・テーマパーク</div>
+<div class="badge-row">
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge badge-park">テーマパーク</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">1,941億</div><div class="m-chg up">↑ +33.9%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">779億</div><div class="m-chg up">↑ +50.3%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">546億</div><div class="m-chg up">↑ +30.9%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">全指標で5期連続過去最高を更新。国内物販・テーマパーク好調。北米・中国・韓国・台湾でのライセンス収入が急拡大。不祥事対応による延期から発表。</div>
+<div class="highlight-item">営業利益成長率+50.3%（18社中最高）</div>
+<div class="highlight-item">2027/3期予想: 売上+18.4%、営業利益+15.0%の895億円</div>
+</div>
+</div>
 
-    <!-- 東映アニメーション -->
-    <div class="company-card" data-name="東映アニメーション 東映" data-cats="anime" data-release="2026-05-13">
-      <div class="card-header">
-        <div class="company-logo" style="background:#f3e8ff;color:#7c3aed;">ア</div>
-        <div class="card-title">
-          <div class="name">東映アニメーション</div>
-          <div class="ticker">4816 | アニメ制作・版権</div>
-          <div class="badge-row">
-            <span class="badge badge-anime">アニメ・映像</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>3Q累計売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">671億</div><div class="m-chg dn">↓ -7.6%</div></div>
-        <div class="metric"><div class="m-label">主要IP</div><div class="m-val" style="font-size:12px">DB・OP</div><div class="m-chg" style="color:#94a3b8">継続安定</div></div>
-        <div class="metric"><div class="m-label">期</div><div class="m-val" style="font-size:12px">3Q累計</div><div class="m-chg" style="color:#94a3b8">FY2026/3</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">3Q累計売上高671億円で前年同期比7.6%減。「ドラゴンボール」「ワンピース」「プリキュア」を主力IPとして安定収益を確保。前年の版権収入一時特需の反動減が影響。</div>
-        <div class="highlight-item">主力IP: ドラゴンボール・ワンピース・プリキュア</div>
-      </div>
-    </div>
+<!-- 東映アニメーション -->
+<div class="company-card" data-name="東映アニメーション 東映" data-cats="anime" data-release="2026-05-13">
+<div class="card-header">
+<div class="company-logo" style="background:#f3e8ff;color:#7c3aed;">ア</div>
+<div class="card-title">
+<div class="name">東映アニメーション</div>
+<div class="ticker">4816 | アニメ制作・版権</div>
+<div class="badge-row">
+<span class="badge badge-anime">アニメ・映像</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">937億</div><div class="m-chg dn">↓ -7.1%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">310億</div><div class="m-chg dn">↓ -4.4%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">251億</div><div class="m-chg up">↑ 過去最高</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">「ドラゴンボール」シリーズのヒット反動減・映画も前年ほどのヒット作なく売上・営業利益は前年比減。ただし海外版権収入が吸収し純利益は過去最高を更新。</div>
+<div class="highlight-item">主力IP: ドラゴンボール・ワンピース・プリキュア</div>
+<div class="highlight-item">純利益250億7千万円で過去最高（海外版権が下支え）</div>
+</div>
+</div>
 
-    <!-- オリエンタルランド -->
-    <div class="company-card" data-name="オリエンタルランド OLC ディズニー TDL TDS" data-cats="park" data-release="2026-04-28">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fff1f2;color:#f43f5e;">オ</div>
-        <div class="card-title">
-          <div class="name">オリエンタルランド</div>
-          <div class="ticker">4661 | テーマパーク</div>
-          <div class="badge-row">
-            <span class="badge badge-park">テーマパーク</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">7,045億</div><div class="m-chg up">↑ +3.7%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,684億</div><div class="m-chg dn">↓ -2.1%</div></div>
-        <div class="metric"><div class="m-label">営業利益率</div><div class="m-val">23.9%</div><div class="m-chg" style="color:#94a3b8">—</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">売上高7,045億円で過去最高を更新。客単価・ホテル事業も最高水準。一方、人件費+112億円・諸経費+112億円が利益を圧迫し営業利益は微減。</div>
-        <div class="highlight-item">テーマパーク事業: 売上5,683億円（+2.9%）、ホテル事業: 売上1,190億円（+7.8%）</div>
-        <div class="highlight-item">客単価が過去最高を更新（有料座席チケット販売好調）</div>
-      </div>
-    </div>
+<!-- オリエンタルランド -->
+<div class="company-card" data-name="オリエンタルランド OLC ディズニー TDL TDS" data-cats="park" data-release="2026-04-28">
+<div class="card-header">
+<div class="company-logo" style="background:#fff1f2;color:#f43f5e;">オ</div>
+<div class="card-title">
+<div class="name">オリエンタルランド</div>
+<div class="ticker">4661 | テーマパーク</div>
+<div class="badge-row">
+<span class="badge badge-park">テーマパーク</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">7,045億</div><div class="m-chg up">↑ +3.7%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">1,684億</div><div class="m-chg dn">↓ -2.1%</div></div>
+<div class="metric"><div class="m-label">営業利益率</div><div class="m-val">23.9%</div><div class="m-chg" style="color:#94a3b8">—</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">売上高7,045億円で過去最高を更新。客単価・ホテル事業も最高水準。一方、人件費+112億円・諸経費+112億円が利益を圧迫し営業利益は微減。</div>
+<div class="highlight-item">テーマパーク事業: 売上5,683億円（+2.9%）、ホテル事業: 売上1,190億円（+7.8%）</div>
+<div class="highlight-item">客単価が過去最高を更新（有料座席チケット販売好調）</div>
+</div>
+</div>
 
-    <!-- KADOKAWA -->
-    <div class="company-card" data-name="KADOKAWA カドカワ エルデンリング アニメ 出版" data-cats="anime game" data-release="2026-05-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fef3c7;color:#92400e;">K</div>
-        <div class="card-title">
-          <div class="name">KADOKAWA</div>
-          <div class="ticker">9468 | 出版・アニメ・ゲーム</div>
-          <div class="badge-row">
-            <span class="badge badge-anime">アニメ・映像</span>
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#fee2e2;color:#dc2626;">大幅減益</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">2,829億</div><div class="m-chg up">↑ +1.8%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">81億</div><div class="m-chg dn">↓ -51.3%</div></div>
-        <div class="metric"><div class="m-label">Webサービス</div><div class="m-val">黒字転換</div><div class="m-chg up">↑ +21億</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">ELDEN RING NIGHTREIGNが想定以上に好調だったものの、出版・ゲーム事業が減収減益、アニメ・実写映像事業は赤字転落し営業利益が51%減に。</div>
-        <div class="highlight-item">ELDEN RING NIGHTREIGN: 想定を上回る好調</div>
-        <div class="highlight-item">アニメ・実写映像事業: 赤字転落</div>
-      </div>
-    </div>
+<!-- KADOKAWA -->
+<div class="company-card" data-name="KADOKAWA カドカワ エルデンリング アニメ 出版" data-cats="anime game" data-release="2026-05-14">
+<div class="card-header">
+<div class="company-logo" style="background:#fef3c7;color:#92400e;">K</div>
+<div class="card-title">
+<div class="name">KADOKAWA</div>
+<div class="ticker">9468 | 出版・アニメ・ゲーム</div>
+<div class="badge-row">
+<span class="badge badge-anime">アニメ・映像</span>
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#fee2e2;color:#dc2626;">大幅減益</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">2,829億</div><div class="m-chg up">↑ +1.8%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">81億</div><div class="m-chg dn">↓ -51.3%</div></div>
+<div class="metric"><div class="m-label">Webサービス</div><div class="m-val">黒字転換</div><div class="m-chg up">↑ +21億</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">ELDEN RING NIGHTREIGNが想定以上に好調だったものの、出版・ゲーム事業が減収減益、アニメ・実写映像事業は赤字転落し営業利益が51%減に。</div>
+<div class="highlight-item">ELDEN RING NIGHTREIGN: 想定を上回る好調</div>
+<div class="highlight-item">アニメ・実写映像事業: 赤字転落</div>
+</div>
+</div>
 
-    <!-- コーエーテクモ -->
-    <div class="company-card" data-name="コーエーテクモ コーテク 仁王 ゼルダ無双 ポケモン" data-cats="game" data-release="2026-04-27">
-      <div class="card-header">
-        <div class="company-logo" style="background:#e0f2fe;color:#0369a1;">テ</div>
-        <div class="card-title">
-          <div class="name">コーエーテクモHD</div>
-          <div class="ticker">3635 | ゲーム</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">884億</div><div class="m-chg up">↑ +6.3%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">372億</div><div class="m-chg up">↑ +15.7%</div></div>
-        <div class="metric"><div class="m-label">経常利益</div><div class="m-val">570億</div><div class="m-chg up">↑ +14.0%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">売上高・経常利益・最終利益が過去最高を更新。『ぽこ あ ポケモン』『仁王3』『ゼルダ無双 封印戦記』が大型タイトルとして貢献。金融収益も業績を押し上げ。</div>
-        <div class="highlight-item">主力タイトル: ぽこ あ ポケモン、仁王3、ゼルダ無双 封印戦記</div>
-        <div class="highlight-item">金融収益: 164億円（経常利益を大幅に押し上げ）</div>
-      </div>
-    </div>
+<!-- コーエーテクモ -->
+<div class="company-card" data-name="コーエーテクモ コーテク 仁王 ゼルダ無双 ポケモン" data-cats="game" data-release="2026-04-27">
+<div class="card-header">
+<div class="company-logo" style="background:#e0f2fe;color:#0369a1;">テ</div>
+<div class="card-title">
+<div class="name">コーエーテクモHD</div>
+<div class="ticker">3635 | ゲーム</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">過去最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">884億</div><div class="m-chg up">↑ +6.3%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">372億</div><div class="m-chg up">↑ +15.7%</div></div>
+<div class="metric"><div class="m-label">経常利益</div><div class="m-val">570億</div><div class="m-chg up">↑ +14.0%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">売上高・経常利益・最終利益が過去最高を更新。『ぽこ あ ポケモン』『仁王3』『ゼルダ無双 封印戦記』が大型タイトルとして貢献。金融収益も業績を押し上げ。</div>
+<div class="highlight-item">主力タイトル: ぽこ あ ポケモン、仁王3、ゼルダ無双 封印戦記</div>
+<div class="highlight-item">金融収益: 164億円（経常利益を大幅に押し上げ）</div>
+</div>
+</div>
 
-    <!-- ブシロード -->
-    <div class="company-card" data-name="ブシロード TCG カードゲーム ヴァイスシュヴァルツ" data-cats="game toy" data-release="2026-05-15">
-      <div class="card-header">
-        <div class="company-logo" style="background:#dcfce7;color:#15803d;">ブ</div>
-        <div class="card-title">
-          <div class="name">ブシロード</div>
-          <div class="ticker">7803 | カードゲーム・ゲーム</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge" style="background:#f0fdf4;color:#166534;">通期予想</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期予想売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高(予)</div><div class="m-val">565億</div><div class="m-chg" style="color:#94a3b8">FY2026/6期</div></div>
-        <div class="metric"><div class="m-label">営業利益(予)</div><div class="m-val">46億</div><div class="m-chg up">↑ 4期ぶり最高</div></div>
-        <div class="metric"><div class="m-label">純利益(予)</div><div class="m-val">55億</div><div class="m-chg up">↑ 上方修正</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー（3Q発表・通期予想）</div>
-        <div class="detail-text">ヴァイスシュヴァルツを中心にTCG事業が好調。新日本プロレスリングをテレビ朝日HDに譲渡し特別利益を計上予定。純利益を39億円から55億円に上方修正。</div>
-        <div class="highlight-item">ヴァイスシュヴァルツ: TCG売上が大幅増（Q1で黒字転換）</div>
-        <div class="highlight-item">新日本プロレス売却益を特別利益として計上予定</div>
-      </div>
-    </div>
+<!-- ブシロード -->
+<div class="company-card" data-name="ブシロード TCG カードゲーム ヴァイスシュヴァルツ" data-cats="game toy" data-release="2026-05-15">
+<div class="card-header">
+<div class="company-logo" style="background:#dcfce7;color:#15803d;">ブ</div>
+<div class="card-title">
+<div class="name">ブシロード</div>
+<div class="ticker">7803 | カードゲーム・ゲーム</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge" style="background:#f0fdf4;color:#166534;">通期予想</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期予想 (FY2026/6)</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高(予)</div><div class="m-val">565億</div><div class="m-chg" style="color:#94a3b8">FY2026/6期</div></div>
+<div class="metric"><div class="m-label">営業利益(予)</div><div class="m-val">46億</div><div class="m-chg up">↑ 4期ぶり最高</div></div>
+<div class="metric"><div class="m-label">純利益(予)</div><div class="m-val">55億</div><div class="m-chg up">↑ 上方修正</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー（3Q発表・通期予想）</div>
+<div class="detail-text">ヴァイスシュヴァルツを中心にTCG事業が好調。新日本プロレスリングをテレビ朝日HDに譲渡し特別利益を計上予定。純利益を39億円から55億円に上方修正。</div>
+<div class="highlight-item">ヴァイスシュヴァルツ: TCG売上が大幅増（Q1で黒字転換）</div>
+<div class="highlight-item">新日本プロレス売却益を特別利益として計上予定</div>
+</div>
+</div>
 
-    <!-- マーベラス -->
-    <div class="company-card" data-name="マーベラス 牧場物語 ルーンファクトリー" data-cats="game" data-release="2026-05-15">
-      <div class="card-header">
-        <div class="company-logo" style="background:#f5f3ff;color:#7c3aed;">マ</div>
-        <div class="card-title">
-          <div class="name">マーベラス</div>
-          <div class="ticker">7844 | ゲーム・アミューズメント</div>
-          <div class="badge-row">
-            <span class="badge badge-game">ゲーム</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">380億</div><div class="m-chg up">↑ +35.8%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">22億</div><div class="m-chg up">↑ +23.7%</div></div>
-        <div class="metric"><div class="m-label">AM事業売上</div><div class="m-val">127億</div><div class="m-chg up">↑ +21.7%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">過去最高売上を達成。コンシューマ新作『龍の国ルーンファクトリー』『牧場物語Let's！風のグランドバザール』が好調。AM事業でポケモンフレンダが海外展開も進展。</div>
-        <div class="highlight-item">コンシューマ新作: 龍の国ルーンファクトリー、牧場物語 Let's！</div>
-        <div class="highlight-item">AM事業: ポケモンフレンダ 売上127億円（+21.7%）、海外展開も進展</div>
-      </div>
-    </div>
+<!-- マーベラス -->
+<div class="company-card" data-name="マーベラス 牧場物語 ルーンファクトリー" data-cats="game" data-release="2026-05-15">
+<div class="card-header">
+<div class="company-logo" style="background:#f5f3ff;color:#7c3aed;">マ</div>
+<div class="card-title">
+<div class="name">マーベラス</div>
+<div class="ticker">7844 | ゲーム・アミューズメント</div>
+<div class="badge-row">
+<span class="badge badge-game">ゲーム</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">380億</div><div class="m-chg up">↑ +35.8%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">22億</div><div class="m-chg up">↑ +23.7%</div></div>
+<div class="metric"><div class="m-label">AM事業売上</div><div class="m-val">127億</div><div class="m-chg up">↑ +21.7%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">過去最高売上を達成。コンシューマ新作『龍の国ルーンファクトリー』『牧場物語Let's！風のグランドバザール』が好調。AM事業でポケモンフレンダが海外展開も進展。</div>
+<div class="highlight-item">コンシューマ新作: 龍の国ルーンファクトリー、牧場物語 Let's！</div>
+<div class="highlight-item">AM事業: ポケモンフレンダ 売上127億円（+21.7%）、海外展開も進展</div>
+</div>
+</div>
 
-    <!-- 壽屋（コトブキヤ） -->
-    <div class="company-card" data-name="コトブキヤ 壽屋 フィギュア プラモデル" data-cats="toy" data-release="2026-05-13">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fef9c3;color:#a16207;">壽</div>
-        <div class="card-title">
-          <div class="name">壽屋（コトブキヤ）</div>
-          <div class="ticker">7809 | フィギュア・プラモデル</div>
-          <div class="badge-row">
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge" style="background:#f0fdf4;color:#166534;">通期予想</span>
-            <span class="badge" style="background:#fee2e2;color:#dc2626;">下方修正</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期予想売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高(予)</div><div class="m-val">165億</div><div class="m-chg" style="color:#94a3b8">FY2026/6期</div></div>
-        <div class="metric"><div class="m-label">営業利益(予)</div><div class="m-val">8億</div><div class="m-chg dn">↓ -50.3%</div></div>
-        <div class="metric"><div class="m-label">3Q累計売上</div><div class="m-val">119億</div><div class="m-chg up">↑ +増収</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー（3Q累計・通期予想）</div>
-        <div class="detail-text">美少女プラモデル市場の競争激化と下期製品受注の不調・期ズレにより通期予想を大幅下方修正。製造原価・荷造運賃・人件費の増加もコスト圧迫要因。</div>
-        <div class="highlight-item">通期予想を下方修正: 売上180億→165億、営業利益17億→8億</div>
-        <div class="highlight-item">美少女プラモデル市場での競争激化が続く</div>
-      </div>
-    </div>
+<!-- 壽屋（コトブキヤ） -->
+<div class="company-card" data-name="コトブキヤ 壽屋 フィギュア プラモデル" data-cats="toy" data-release="2026-05-13">
+<div class="card-header">
+<div class="company-logo" style="background:#fef9c3;color:#a16207;">壽</div>
+<div class="card-title">
+<div class="name">壽屋（コトブキヤ）</div>
+<div class="ticker">7809 | フィギュア・プラモデル</div>
+<div class="badge-row">
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge" style="background:#f0fdf4;color:#166534;">通期予想</span>
+<span class="badge" style="background:#fee2e2;color:#dc2626;">下方修正</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期予想 (FY2026/6)</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高(予)</div><div class="m-val">165億</div><div class="m-chg" style="color:#94a3b8">FY2026/6期</div></div>
+<div class="metric"><div class="m-label">営業利益(予)</div><div class="m-val">8億</div><div class="m-chg dn">↓ -50.3%</div></div>
+<div class="metric"><div class="m-label">3Q累計売上</div><div class="m-val">119億</div><div class="m-chg up">↑ 増収</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー（3Q累計・通期予想）</div>
+<div class="detail-text">美少女プラモデル市場の競争激化と下期製品受注の不調・期ズレにより通期予想を大幅下方修正。製造原価・荷造運賃・人件費の増加もコスト圧迫要因。</div>
+<div class="highlight-item">通期予想を下方修正: 売上180億→165億、営業利益17億→8億</div>
+<div class="highlight-item">美少女プラモデル市場での競争激化が続く</div>
+</div>
+</div>
 
-    <!-- タカラトミー -->
-    <div class="company-card" data-name="タカラトミー トミカ デュエルマスターズ トランスフォーマー" data-cats="toy" data-release="2026-05-12">
-      <div class="card-header">
-        <div class="company-logo" style="background:#fef3c7;color:#b45309;">タ</div>
-        <div class="card-title">
-          <div class="name">タカラトミー</div>
-          <div class="ticker">7867 | 玩具・TCG</div>
-          <div class="badge-row">
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge badge-full">通期</span>
-            <span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">2,704億</div><div class="m-chg up">↑ +8.1%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">242億</div><div class="m-chg dn">↓ -2.5%</div></div>
-        <div class="metric"><div class="m-label">営業利益率</div><div class="m-val">9.0%</div><div class="m-chg" style="color:#94a3b8">—</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">売上高は2,704億円で過去最高を更新。トミカ・デュエマ・T-SPARK（ハイターゲットホビー）が牽引。一方、戦略投資費用と米国関税の影響で営業利益は微減。</div>
-        <div class="highlight-item">トミカ・デュエルマスターズ・トランスフォーマーが好調</div>
-        <div class="highlight-item">米子会社で減損損失を計上、関税影響も逆風に</div>
-      </div>
-    </div>
+<!-- タカラトミー -->
+<div class="company-card" data-name="タカラトミー トミカ デュエルマスターズ トランスフォーマー" data-cats="toy" data-release="2026-05-12">
+<div class="card-header">
+<div class="company-logo" style="background:#fef3c7;color:#b45309;">タ</div>
+<div class="card-title">
+<div class="name">タカラトミー</div>
+<div class="ticker">7867 | 玩具・TCG</div>
+<div class="badge-row">
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge badge-full">通期</span>
+<span class="badge" style="background:#dcfce7;color:#15803d;">売上最高</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">2,704億</div><div class="m-chg up">↑ +8.1%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">242億</div><div class="m-chg dn">↓ -2.5%</div></div>
+<div class="metric"><div class="m-label">営業利益率</div><div class="m-val">9.0%</div><div class="m-chg" style="color:#94a3b8">—</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">売上高は2,704億円で過去最高を更新。トミカ・デュエマ・T-SPARK（ハイターゲットホビー）が牽引。一方、戦略投資費用と米国関税の影響で営業利益は微減。</div>
+<div class="highlight-item">トミカ・デュエルマスターズ・トランスフォーマーが好調</div>
+<div class="highlight-item">米子会社で減損損失を計上、関税影響も逆風に</div>
+</div>
+</div>
 
-    <!-- ハピネット -->
-    <div class="company-card" data-name="ハピネット 一番くじ バンダイ Switch" data-cats="toy" data-release="2026-05-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#ffe4e6;color:#be123c;">ハ</div>
-        <div class="card-title">
-          <div class="name">ハピネット</div>
-          <div class="ticker">7552 | 玩具・ゲーム卸</div>
-          <div class="badge-row">
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">4,390億</div><div class="m-chg up">↑ +20.5%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">155億</div><div class="m-chg up">↑ +33.5%</div></div>
-        <div class="metric"><div class="m-label">営業利益率</div><div class="m-val">3.5%</div><div class="m-chg up">↑ 改善</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">Nintendo Switch 2需要を追い風にゲーム卸が拡大。一番くじ・プラモデル・ホビー・カプセル玩具も好調。玩具・アミューズメント事業がともに大幅増収増益。</div>
-        <div class="highlight-item">Switch 2需要追い風でゲーム卸売上が大幅拡大</div>
-        <div class="highlight-item">一番くじ・プラモデル・カプセル玩具が全て好調</div>
-      </div>
-    </div>
+<!-- ハピネット -->
+<div class="company-card" data-name="ハピネット 一番くじ バンダイ Switch" data-cats="toy" data-release="2026-05-14">
+<div class="card-header">
+<div class="company-logo" style="background:#ffe4e6;color:#be123c;">ハ</div>
+<div class="card-title">
+<div class="name">ハピネット</div>
+<div class="ticker">7552 | 玩具・ゲーム卸</div>
+<div class="badge-row">
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">4,390億</div><div class="m-chg up">↑ +20.5%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">155億</div><div class="m-chg up">↑ +33.5%</div></div>
+<div class="metric"><div class="m-label">経常利益</div><div class="m-val">157億</div><div class="m-chg up">↑ +31.2%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">Nintendo Switch 2需要を追い風にゲーム卸が拡大。一番くじ・プラモデル・ホビー・カプセル玩具も好調。玩具・アミューズメント事業がともに大幅増収増益。</div>
+<div class="highlight-item">Switch 2需要追い風でゲーム卸売上が大幅拡大</div>
+<div class="highlight-item">一番くじ・プラモデル・カプセル玩具が全て好調</div>
+</div>
+</div>
 
-    <!-- フリュー -->
-    <div class="company-card" data-name="フリュー クレーンゲーム プリクラ プリントシール" data-cats="toy" data-release="2026-05-14">
-      <div class="card-header">
-        <div class="company-logo" style="background:#f0fdf4;color:#15803d;">フ</div>
-        <div class="card-title">
-          <div class="name">フリュー</div>
-          <div class="ticker">6238 | アミューズメント・物販</div>
-          <div class="badge-row">
-            <span class="badge badge-toy">トイホビー</span>
-            <span class="badge badge-full">通期</span>
-          </div>
-        </div>
-      </div>
-    <div class="card-period"><span>通期売上</span></div>
-      <div class="card-metrics">
-        <div class="metric"><div class="m-label">売上高</div><div class="m-val">448億</div><div class="m-chg up">↑ +1.0%</div></div>
-        <div class="metric"><div class="m-label">営業利益</div><div class="m-val">33億</div><div class="m-chg up">↑ +48.1%</div></div>
-        <div class="metric"><div class="m-label">最終利益</div><div class="m-val">21億</div><div class="m-chg up">↑ +26.6%</div></div>
-      </div>
-      <div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
-      <div class="card-detail collapsed">
-        <div class="detail-label">決算サマリー</div>
-        <div class="detail-text">クレーンゲーム景品・海外物販が好調でアミューズメント事業が大幅増益。プリントシール機事業も収益改善。売上はほぼ横ばいながら利益率が大きく向上。</div>
-        <div class="highlight-item">クレーンゲーム景品・海外物販が増益を牽引</div>
-        <div class="highlight-item">プリントシール（プリクラ）事業の収益改善</div>
-      </div>
-    </div>
+<!-- フリュー -->
+<div class="company-card" data-name="フリュー クレーンゲーム プリクラ プリントシール" data-cats="toy" data-release="2026-05-14">
+<div class="card-header">
+<div class="company-logo" style="background:#f0fdf4;color:#15803d;">フ</div>
+<div class="card-title">
+<div class="name">フリュー</div>
+<div class="ticker">6238 | アミューズメント・物販</div>
+<div class="badge-row">
+<span class="badge badge-toy">トイホビー</span>
+<span class="badge badge-full">通期</span>
+</div>
+</div>
+</div>
+<div class="card-period"><span>通期売上</span></div>
+<div class="card-metrics">
+<div class="metric"><div class="m-label">売上高</div><div class="m-val">448億</div><div class="m-chg up">↑ +1.0%</div></div>
+<div class="metric"><div class="m-label">営業利益</div><div class="m-val">33億</div><div class="m-chg up">↑ +48.1%</div></div>
+<div class="metric"><div class="m-label">最終利益</div><div class="m-val">21億</div><div class="m-chg up">↑ +26.6%</div></div>
+</div>
+<div class="card-footer"><button class="expand-btn" onclick="toggleDetail(this)">▼ 詳細サマリーを展開</button></div>
+<div class="card-detail collapsed">
+<div class="detail-label">決算サマリー</div>
+<div class="detail-text">クレーンゲーム景品・海外物販が好調でアミューズメント事業が大幅増益。プリントシール機事業も収益改善。売上はほぼ横ばいながら利益率が大きく向上。</div>
+<div class="highlight-item">クレーンゲーム景品・海外物販が増益を牽引</div>
+<div class="highlight-item">プリントシール（プリクラ）事業の収益改善</div>
+</div>
+</div>
 
-  </div><!-- /card-grid -->
-  <div class="no-results" id="noResults">該当する企業が見つかりませんでした。</div>
+</div><!-- /card-grid -->
+<div class="no-results" id="noResults">該当する企業が見つかりませんでした。</div>
 
-  <div class="source-footer">
-    <strong>出典</strong>: 各社IR資料・決算短信（2026年3月期・2月期・6月期通期）、
-    <a href="https://gamebiz.jp/" target="_blank">gamebiz.jp</a>、
-    <a href="https://www.nikkei.com/" target="_blank">日本経済新聞</a>、
-    <a href="https://news.yahoo.co.jp/" target="_blank">Yahoo!ニュース</a>
-    — 数値は各社公式IR資料に基づく。ブシロード・壽屋は6月期のため通期予想値（3Q発表時点）。東映アニメーションは3Q累計値。
-    <span style="float:right">更新: 2026-07-17</span>
-  </div>
+<div class="source-footer">
+<strong>出典</strong>: 各社IR資料・決算短信（2026年3月期・2月期・6月期通期）、
+<a href="https://gamebiz.jp/" target="_blank">gamebiz.jp</a>、
+<a href="https://www.nikkei.com/" target="_blank">日本経済新聞</a>、
+<a href="https://news.yahoo.co.jp/" target="_blank">Yahoo!ニュース</a>
+— 数値は各社公式IR資料に基づく。ブシロード・壽屋は6月期のため通期予想値（3Q発表時点）。
+<span style="float:right">更新: 2026-07-18</span>
+</div>
 </main>
 
 <script>
 // ====== CHARTS ======
 const growthLabels = ['任天堂','バンナム','コナミ','カプコン','サンリオ','東宝','スクエニ','東映アニメ','マーベラス','ハピネット','タカラトミー','コーテクモ','フリュー','KADOKAWA','OLC'];
-const growthVals   = [98.6, 8.6, 17.1, 15.2, 33.9, 15.2, -8.3, -7.6, 35.8, 20.5, 8.1, 6.3, 1.0, 1.8, 3.7];
+const growthVals = [98.6, 8.6, 17.1, 15.2, 33.9, 15.2, -8.3, -7.1, 35.8, 20.5, 8.1, 6.3, 1.0, 1.8, 3.7];
 const opLabels = ['任天堂','バンナム','コナミ','カプコン','サンリオ','東宝','スクエニ','フリュー','ハピネット','マーベラス','コーテクモ','タカラトミー','OLC','KADOKAWA'];
-const opVals   = [27.5, 5.2, 33.3, 14.5, 50.3, 5.0, 34.9, 48.1, 33.5, 23.7, 15.7, -2.5, -2.1, -51.3];
+const opVals = [27.5, 5.2, 33.3, 14.5, 50.3, 5.0, 34.9, 48.1, 33.5, 23.7, 15.7, -2.5, -2.1, -51.3];
 
 function barColors(vals) {
-  return vals.map(v => v >= 0 ? 'rgba(37,99,235,0.72)' : 'rgba(220,38,38,0.72)');
+return vals.map(v => v >= 0 ? 'rgba(37,99,235,0.72)' : 'rgba(220,38,38,0.72)');
 }
 const chartDefaults = {
-  responsive: true, maintainAspectRatio: false,
-  plugins: { legend: { display: false } },
-  scales: {
-    x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: '#f1f5f9' } },
-    y: { ticks: { color: '#94a3b8', font: { size: 10 }, callback: v => v + '%' }, grid: { color: '#f1f5f9' } }
-  }
+responsive: true, maintainAspectRatio: false,
+plugins: { legend: { display: false } },
+scales: {
+x: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { color: '#f1f5f9' } },
+y: { ticks: { color: '#94a3b8', font: { size: 10 }, callback: v => v + '%' }, grid: { color: '#f1f5f9' } }
+}
 };
 
 new Chart(document.getElementById('growthChart'), {
-  type: 'bar',
-  data: { labels: growthLabels, datasets: [{ data: growthVals, backgroundColor: barColors(growthVals), borderRadius: 5 }] },
-  options: chartDefaults
+type: 'bar',
+data: { labels: growthLabels, datasets: [{ data: growthVals, backgroundColor: barColors(growthVals), borderRadius: 5 }] },
+options: chartDefaults
 });
 new Chart(document.getElementById('opChart'), {
-  type: 'bar',
-  data: { labels: opLabels, datasets: [{ data: opVals, backgroundColor: barColors(opVals), borderRadius: 5 }] },
-  options: chartDefaults
+type: 'bar',
+data: { labels: opLabels, datasets: [{ data: opVals, backgroundColor: barColors(opVals), borderRadius: 5 }] },
+options: chartDefaults
 });
 
 // ====== DETAIL TOGGLE ======
 function toggleDetail(btn) {
-  const detail = btn.closest('.company-card').querySelector('.card-detail');
-  const collapsed = detail.classList.toggle('collapsed');
-  btn.textContent = collapsed ? '▼ 詳細サマリーを展開' : '▲ 詳細サマリーを閉じる';
+const detail = btn.closest('.company-card').querySelector('.card-detail');
+const collapsed = detail.classList.toggle('collapsed');
+btn.textContent = collapsed ? '▼ 詳細サマリーを展開' : '▲ 詳細サマリーを閉じる';
 }
 
 // ====== FILTER + PERIOD ======
-const TODAY = new Date('2026-07-17');
+const TODAY = new Date('2026-07-18');
 let activeCategory = 'all';
 let activeDays = 7;
 
@@ -818,58 +820,58 @@ const periodRange = document.getElementById('periodRange');
 function fmt(d) { return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`; }
 
 function applyFilters() {
-  const q = searchInput.value.toLowerCase().trim();
-  const cutoff = new Date(TODAY);
-  cutoff.setDate(cutoff.getDate() - activeDays);
+const q = searchInput.value.toLowerCase().trim();
+const cutoff = new Date(TODAY);
+cutoff.setDate(cutoff.getDate() - activeDays);
 
-  let visible = 0, fresh = 0;
-  cards.forEach(card => {
-    const matchSearch = !q || card.dataset.name.toLowerCase().includes(q);
-    const matchCat = activeCategory === 'all' || (card.dataset.cats||'').includes(activeCategory);
-    if (!matchSearch || !matchCat) {
-      card.classList.add('hidden');
-      card.classList.remove('card-dimmed');
-      card.querySelector('.badge-new')?.remove();
-      return;
-    }
-    card.classList.remove('hidden');
-    visible++;
-    const rel = card.dataset.release ? new Date(card.dataset.release) : null;
-    const inRange = rel && rel >= cutoff && rel <= TODAY;
-    if (inRange) {
-      card.classList.remove('card-dimmed');
-      fresh++;
-      if (!card.querySelector('.badge-new')) {
-        const nb = document.createElement('span');
-        nb.className = 'badge badge-new';
-        nb.textContent = 'NEW';
-        card.querySelector('.badge-row').appendChild(nb);
-      }
-    } else {
-      card.classList.add('card-dimmed');
-      card.querySelector('.badge-new')?.remove();
-    }
-  });
+let visible = 0, fresh = 0;
+cards.forEach(card => {
+const matchSearch = !q || card.dataset.name.toLowerCase().includes(q);
+const matchCat = activeCategory === 'all' || (card.dataset.cats||'').includes(activeCategory);
+if (!matchSearch || !matchCat) {
+card.classList.add('hidden');
+card.classList.remove('card-dimmed');
+card.querySelector('.badge-new')?.remove();
+return;
+}
+card.classList.remove('hidden');
+visible++;
+const rel = card.dataset.release ? new Date(card.dataset.release) : null;
+const inRange = rel && rel >= cutoff && rel <= TODAY;
+if (inRange) {
+card.classList.remove('card-dimmed');
+fresh++;
+if (!card.querySelector('.badge-new')) {
+const nb = document.createElement('span');
+nb.className = 'badge badge-new';
+nb.textContent = 'NEW';
+card.querySelector('.badge-row').appendChild(nb);
+}
+} else {
+card.classList.add('card-dimmed');
+card.querySelector('.badge-new')?.remove();
+}
+});
 
-  resultsCount.textContent = visible + '件表示中';
-  noResults.style.display = visible === 0 ? 'block' : 'none';
-  periodBanner.style.display = 'flex';
-  periodCount.textContent = fresh;
-  periodRange.textContent = `（${fmt(cutoff)} 〜 ${fmt(TODAY)}）`;
+resultsCount.textContent = visible + '件表示中';
+noResults.style.display = visible === 0 ? 'block' : 'none';
+periodBanner.style.display = 'flex';
+periodCount.textContent = fresh;
+periodRange.textContent = `（${fmt(cutoff)} 〜 ${fmt(TODAY)}）`;
 }
 
 searchInput.addEventListener('input', applyFilters);
 filterBtns.forEach(btn => btn.addEventListener('click', () => {
-  filterBtns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeCategory = btn.dataset.cat;
-  applyFilters();
+filterBtns.forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+activeCategory = btn.dataset.cat;
+applyFilters();
 }));
 periodBtns.forEach(btn => btn.addEventListener('click', () => {
-  periodBtns.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  activeDays = parseInt(btn.dataset.days);
-  applyFilters();
+periodBtns.forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+activeDays = parseInt(btn.dataset.days);
+applyFilters();
 }));
 
 applyFilters();
