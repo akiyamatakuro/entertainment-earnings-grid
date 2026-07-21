@@ -235,14 +235,13 @@ const companies = [
 
 const CATS = ["ゲーム","トイホビー","アニメ・映像","テーマパーク"];
 const PERIODS = [
-  { label:"1週間", days:7 },
-  { label:"2週間", days:14 },
   { label:"1ヶ月", days:30 },
   { label:"3ヶ月", days:90 },
+  { label:"6ヶ月", days:180 },
 ];
 
 let activeCats = new Set(CATS);
-let activePeriodDays = 7;
+let activePeriodDays = 30;
 
 // ---- helpers ----
 function fmt(n, unit='M') {
