@@ -1,243 +1,243 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entertainment Earnings Grid</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { color-scheme: light; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      min-height: 100vh;
-    }
-    header {
-      background: #fff;
-      border-bottom: 1px solid #d2d2d7;
-      padding: 16px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
-    header .updated { font-size: 12px; color: #6e6e73; }
-    .main { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entertainment Earnings Grid</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { color-scheme: light; }
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+background: #f5f5f7;
+color: #1d1d1f;
+min-height: 100vh;
+}
+header {
+background: #fff;
+border-bottom: 1px solid #d2d2d7;
+padding: 16px 24px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+position: sticky;
+top: 0;
+z-index: 100;
+}
+header h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+header .updated { font-size: 12px; color: #6e6e73; }
+.main { max-width: 1280px; margin: 0 auto; padding: 24px 16px; }
 
-    /* KPI cards */
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .kpi-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      border: 1px solid #e5e5ea;
-    }
-    .kpi-card .label { font-size: 11px; color: #6e6e73; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-    .kpi-card .value { font-size: 20px; font-weight: 700; }
-    .kpi-card .sub { font-size: 12px; color: #6e6e73; margin-top: 2px; }
+/* KPI cards */
+.kpi-row {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 12px;
+margin-bottom: 24px;
+}
+.kpi-card {
+background: #fff;
+border-radius: 12px;
+padding: 16px;
+border: 1px solid #e5e5ea;
+}
+.kpi-card .label { font-size: 11px; color: #6e6e73; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.kpi-card .value { font-size: 20px; font-weight: 700; }
+.kpi-card .sub { font-size: 12px; color: #6e6e73; margin-top: 2px; }
 
-    /* Filters */
-    .filters { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
-    .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
-    .filter-label { font-size: 12px; color: #6e6e73; font-weight: 500; align-self: center; }
-    .pill {
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      border: 1.5px solid #d2d2d7;
-      background: #fff;
-      color: #1d1d1f;
-      transition: all 0.15s;
-    }
-    .pill.active {
-      background: #0071e3;
-      border-color: #0071e3;
-      color: #fff;
-    }
-    .pill[data-cat="ゲーム"].active { background: #5856d6; border-color: #5856d6; }
-    .pill[data-cat="トイホビー"].active { background: #ff9500; border-color: #ff9500; }
-    .pill[data-cat="アニメ・映像"].active { background: #34c759; border-color: #34c759; }
-    .pill[data-cat="テーマパーク"].active { background: #ff3b30; border-color: #ff3b30; }
+/* Filters */
+.filters { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+.filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-label { font-size: 12px; color: #6e6e73; font-weight: 500; align-self: center; }
+.pill {
+padding: 5px 12px;
+border-radius: 20px;
+font-size: 13px;
+font-weight: 500;
+cursor: pointer;
+border: 1.5px solid #d2d2d7;
+background: #fff;
+color: #1d1d1f;
+transition: all 0.15s;
+}
+.pill.active {
+background: #0071e3;
+border-color: #0071e3;
+color: #fff;
+}
+.pill[data-cat="ゲーム"].active { background: #5856d6; border-color: #5856d6; }
+.pill[data-cat="トイホビー"].active { background: #ff9500; border-color: #ff9500; }
+.pill[data-cat="アニメ・映像"].active { background: #34c759; border-color: #34c759; }
+.pill[data-cat="テーマパーク"].active { background: #ff3b30; border-color: #ff3b30; }
 
-    /* Charts section */
-    .charts-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    @media (max-width: 768px) { .charts-row { grid-template-columns: 1fr; } }
-    .chart-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      border: 1px solid #e5e5ea;
-    }
-    .chart-card h3 { font-size: 13px; font-weight: 600; color: #6e6e73; margin-bottom: 12px; }
-    .chart-card canvas { max-height: 220px; }
+/* Charts section */
+.charts-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 16px;
+margin-bottom: 24px;
+}
+@media (max-width: 768px) { .charts-row { grid-template-columns: 1fr; } }
+.chart-card {
+background: #fff;
+border-radius: 12px;
+padding: 16px;
+border: 1px solid #e5e5ea;
+}
+.chart-card h3 { font-size: 13px; font-weight: 600; color: #6e6e73; margin-bottom: 12px; }
+.chart-card canvas { max-height: 220px; }
 
-    /* Company grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-    }
-    .company-card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
-      border: 1px solid #e5e5ea;
-      transition: opacity 0.2s, box-shadow 0.2s;
-    }
-    .company-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-    .company-card.dimmed { opacity: 0.38; }
-    .company-card.hidden { display: none; }
+/* Company grid */
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 12px;
+}
+.company-card {
+background: #fff;
+border-radius: 12px;
+padding: 16px;
+border: 1px solid #e5e5ea;
+transition: opacity 0.2s, box-shadow 0.2s;
+}
+.company-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.company-card.dimmed { opacity: 0.38; }
+.company-card.hidden { display: none; }
 
-    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-    .card-header .name { font-size: 15px; font-weight: 700; }
-    .card-header .code { font-size: 11px; color: #6e6e73; font-weight: 500; margin-top: 1px; }
-    .cat-badge {
-      font-size: 10px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
-    .cat-badge.ゲーム { background: #f0effe; color: #5856d6; }
-    .cat-badge.トイホビー { background: #fff4e0; color: #c07500; }
-    .cat-badge.アニメ・映像 { background: #edfbf1; color: #1d8a3a; }
-    .cat-badge.テーマパーク { background: #fff0ef; color: #c0392b; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.card-header .name { font-size: 15px; font-weight: 700; }
+.card-header .code { font-size: 11px; color: #6e6e73; font-weight: 500; margin-top: 1px; }
+.cat-badge {
+font-size: 10px;
+font-weight: 600;
+padding: 3px 8px;
+border-radius: 10px;
+white-space: nowrap;
+}
+.cat-badge.ゲーム { background: #f0effe; color: #5856d6; }
+.cat-badge.トイホビー { background: #fff4e0; color: #c07500; }
+.cat-badge.アニメ・映像 { background: #edfbf1; color: #1d8a3a; }
+.cat-badge.テーマパーク { background: #fff0ef; color: #c0392b; }
 
-    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-    .metric .m-label { font-size: 10px; color: #6e6e73; font-weight: 500; }
-    .metric .m-value { font-size: 14px; font-weight: 700; }
-    .metric .m-growth { font-size: 12px; font-weight: 600; }
-    .growth-pos { color: #30b040; }
-    .growth-neg { color: #d32f2f; }
-    .growth-na { color: #6e6e73; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.metric .m-label { font-size: 10px; color: #6e6e73; font-weight: 500; }
+.metric .m-value { font-size: 14px; font-weight: 700; }
+.metric .m-growth { font-size: 12px; font-weight: 600; }
+.growth-pos { color: #30b040; }
+.growth-neg { color: #d32f2f; }
+.growth-na { color: #6e6e73; }
 
-    .card-footer { font-size: 11px; color: #6e6e73; line-height: 1.4; }
-    .release-date { font-size: 11px; color: #aeaeb2; margin-top: 6px; }
-    .pending-badge { display: inline-block; background: #f5f5f7; color: #6e6e73; font-size: 11px; padding: 2px 8px; border-radius: 6px; border: 1px solid #d2d2d7; margin-bottom: 6px; }
+.card-footer { font-size: 11px; color: #6e6e73; line-height: 1.4; }
+.release-date { font-size: 11px; color: #aeaeb2; margin-top: 6px; }
+.pending-badge { display: inline-block; background: #f5f5f7; color: #6e6e73; font-size: 11px; padding: 2px 8px; border-radius: 6px; border: 1px solid #d2d2d7; margin-bottom: 6px; }
 
-    .new-badge { display: inline-block; background: #0071e3; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: middle; }
-  </style>
+.new-badge { display: inline-block; background: #0071e3; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 8px; margin-left: 6px; vertical-align: middle; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>🎮 Entertainment Earnings Grid</h1>
-    <span class="updated" id="updated-at"></span>
-  </header>
+<header>
+<h1>🎮 Entertainment Earnings Grid</h1>
+<span class="updated" id="updated-at"></span>
+</header>
 
-  <div class="main">
-    <!-- KPI Row -->
-    <div class="kpi-row" id="kpi-row"></div>
+<div class="main">
+<!-- KPI Row -->
+<div class="kpi-row" id="kpi-row"></div>
 
-    <!-- Filters -->
-    <div class="filters">
-      <span class="filter-label">カテゴリ</span>
-      <div class="filter-group" id="cat-filters"></div>
-      <span class="filter-label" style="margin-left:8px;">期間</span>
-      <div class="filter-group" id="period-filters"></div>
-    </div>
+<!-- Filters -->
+<div class="filters">
+<span class="filter-label">カテゴリ</span>
+<div class="filter-group" id="cat-filters"></div>
+<span class="filter-label" style="margin-left:8px;">期間</span>
+<div class="filter-group" id="period-filters"></div>
+</div>
 
-    <!-- Charts -->
-    <div class="charts-row">
-      <div class="chart-card">
-        <h3>売上高成長率（前期比）</h3>
-        <canvas id="chartRev"></canvas>
-      </div>
-      <div class="chart-card">
-        <h3>営業利益成長率（前期比）</h3>
-        <canvas id="chartOp"></canvas>
-      </div>
-    </div>
+<!-- Charts -->
+<div class="charts-row">
+<div class="chart-card">
+<h3>売上高成長率（前期比）</h3>
+<canvas id="chartRev"></canvas>
+</div>
+<div class="chart-card">
+<h3>営業利益成長率（前期比）</h3>
+<canvas id="chartOp"></canvas>
+</div>
+</div>
 
-    <!-- Company Grid -->
-    <div class="grid" id="company-grid"></div>
-  </div>
+<!-- Company Grid -->
+<div class="grid" id="company-grid"></div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
 <script>
-const TODAY = new Date('2026-07-21');
+const TODAY = new Date('2026-07-24');
 
 const companies = [
-  // ゲーム
-  { code:"7974", name:"任天堂", cat:"ゲーム", period:"2026年3月期", release:"2026-05-08",
-    revenue:2313051, revGrowth:98.6, opProfit:360117, opGrowth:27.5,
-    note:"Nintendo Switch 2効果で売上高約2倍。ハード1,986万台・ソフト4,871万本。" },
-  { code:"7832", name:"バンダイナムコHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-13",
-    revenue:1348246, revGrowth:8.6, opProfit:189517, opGrowth:5.2,
-    note:"ゲーム・玩具ともに堅調。海外売上が牽引。" },
-  { code:"9766", name:"コナミグループ", cat:"ゲーム", period:"2026年3月期", release:"2026-05-08",
-    revenue:493677, revGrowth:17.1, opProfit:135891, opGrowth:33.3,
-    note:"デジタルエンタメ+21.5%。メタルギア・サイレントヒル好調。" },
-  { code:"9697", name:"カプコン", cat:"ゲーム", period:"2026年3月期", release:"2026-05-13",
-    revenue:195365, revGrowth:15.2, opProfit:75295, opGrowth:14.5,
-    note:"13期連続営業増益・11期連続10%超増益。売上・営業利益とも過去最高。" },
-  { code:"9684", name:"スクウェア・エニックスHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-14",
-    revenue:297661, revGrowth:-8.3, opProfit:54736, opGrowth:34.9,
-    note:"売上減も組織再編特損一巡で利益大幅回復。" },
-  { code:"6460", name:"セガサミーHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-12",
-    revenue:487500, revGrowth:13.7, opProfit:47128, opGrowth:-2.1,
-    note:"売上+13.7%も、Rovio関連の減損計上で最終赤字転落。Super Game構想中止。" },
-  { code:"3635", name:"コーエーテクモHD", cat:"ゲーム", period:"2026年3月期", release:"2026-04-27",
-    revenue:88393, revGrowth:6.3, opProfit:37168, opGrowth:15.7,
-    note:"仁王3・ゼルダ無双 封印戦記等貢献。売上・経常利益・純利益が過去最高。" },
-  { code:"7844", name:"マーベラス", cat:"ゲーム", period:"2026年3月期", release:"2026-05-15",
-    revenue:37982, revGrowth:35.8, opProfit:2248, opGrowth:23.7,
-    note:"コンシューマ新作3タイトルとAM事業好調で過去最高売上達成。" },
-  { code:"7803", name:"ブシロード", cat:"ゲーム", period:"2026年6月期", release:null,
-    revenue:null, revGrowth:null, opProfit:null, opGrowth:null,
-    note:"6月期決算。通期結果は2026年8月頃発表予定。予想: 売上565億円、営業利益46億円。" },
-  // トイホビー
-  { code:"7867", name:"タカラトミー", cat:"トイホビー", period:"2026年3月期", release:"2026-05-12",
-    revenue:270455, revGrowth:8.1, opProfit:24246, opGrowth:-2.5,
-    note:"売上高過去最高（2,704億円）。戦略的投資増・米関税影響で営業利益は微減。" },
-  { code:"7552", name:"ハピネット", cat:"トイホビー", period:"2026年3月期", release:"2026-05-15",
-    revenue:439052, revGrowth:null, opProfit:null, opGrowth:31.2,
-    note:"Switch 2関連商材伸長。経常利益+31.2%の157億円。" },
-  { code:"6238", name:"フリュー", cat:"トイホビー", period:"2026年3月期", release:"2026-05-14",
-    revenue:44767, revGrowth:1.0, opProfit:3315, opGrowth:48.1,
-    note:"営業利益+48.1%と大幅増益。" },
-  { code:"7809", name:"壽屋", cat:"トイホビー", period:"2026年6月期", release:null,
-    revenue:null, revGrowth:null, opProfit:null, opGrowth:null,
-    note:"6月期決算。通期結果は2026年8月頃発表予定。予想: 売上165億円、営業利益16億円。" },
-  { code:"8136", name:"サンリオ", cat:"トイホビー", period:"2026年3月期", release:"2026-06-23",
-    revenue:194088, revGrowth:33.9, opProfit:77859, opGrowth:50.3,
-    note:"5期連続で売上・利益ともに過去最高更新。国内外ライセンス・物販が全方位好調。" },
-  // アニメ・映像
-  { code:"9602", name:"東宝", cat:"アニメ・映像", period:"2026年2月期", release:"2026-04-14",
-    revenue:360663, revGrowth:15.2, opProfit:67889, opGrowth:5.0,
-    note:"劇場版「鬼滅の刃」・「国宝」のメガヒット。全主要指標で過去最高更新。" },
-  { code:"4816", name:"東映アニメーション", cat:"アニメ・映像", period:"2026年3月期", release:"2026-05-11",
-    revenue:93600, revGrowth:null, opProfit:31000, opGrowth:null,
-    note:"海外版権好調・円安効果で大幅上方修正。純利益+30%超見込み。" },
-  { code:"9468", name:"KADOKAWA", cat:"アニメ・映像", period:"2026年3月期", release:"2026-05-14",
-    revenue:282908, revGrowth:1.8, opProfit:8102, opGrowth:-51.3,
-    note:"出版・ゲーム減収減益、アニメ実写赤字転落。不祥事影響も残存。" },
-  // テーマパーク
-  { code:"4661", name:"オリエンタルランド", cat:"テーマパーク", period:"2026年3月期", release:"2026-04-28",
-    revenue:704500, revGrowth:3.7, opProfit:168400, opGrowth:-2.1,
-    note:"売上高7,045億円で過去最高も、コスト増が上回り営業利益は2.1%減。" },
+// ゲーム
+{ code:"7974", name:"任天堂", cat:"ゲーム", period:"2026年3月期", release:"2026-05-08",
+revenue:2313051, revGrowth:98.6, opProfit:360117, opGrowth:27.5,
+note:"Nintendo Switch 2効果で売上高約2倍。ハード1,986万台・ソフト4,871万本。" },
+{ code:"7832", name:"バンダイナムコHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-13",
+revenue:1348246, revGrowth:8.6, opProfit:189517, opGrowth:5.2,
+note:"ゲーム・玩具ともに堅調。海外売上が牽引。" },
+{ code:"9766", name:"コナミグループ", cat:"ゲーム", period:"2026年3月期", release:"2026-05-08",
+revenue:493677, revGrowth:17.1, opProfit:135891, opGrowth:33.3,
+note:"デジタルエンタメ+21.5%。メタルギア・サイレントヒル好調。" },
+{ code:"9697", name:"カプコン", cat:"ゲーム", period:"2026年3月期", release:"2026-05-13",
+revenue:195365, revGrowth:15.2, opProfit:75295, opGrowth:14.5,
+note:"13期連続営業増益・11期連続10%超増益。売上・営業利益とも過去最高。" },
+{ code:"9684", name:"スクウェア・エニックスHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-14",
+revenue:297661, revGrowth:-8.3, opProfit:54736, opGrowth:34.9,
+note:"売上減も組織再編特損一巡で利益大幅回復。" },
+{ code:"6460", name:"セガサミーHD", cat:"ゲーム", period:"2026年3月期", release:"2026-05-12",
+revenue:487500, revGrowth:13.7, opProfit:47128, opGrowth:-2.1,
+note:"売上+13.7%も、Rovio関連の減損計上で最終赤字転落。Super Game構想中止。" },
+{ code:"3635", name:"コーエーテクモHD", cat:"ゲーム", period:"2026年3月期", release:"2026-04-27",
+revenue:88393, revGrowth:6.3, opProfit:37168, opGrowth:15.7,
+note:"仁王3・ゼルダ無双 封印戦記等貢献。売上・経常利益・純利益が過去最高。" },
+{ code:"7844", name:"マーベラス", cat:"ゲーム", period:"2026年3月期", release:"2026-05-15",
+revenue:37982, revGrowth:35.8, opProfit:2248, opGrowth:23.7,
+note:"コンシューマ新作3タイトルとAM事業好調で過去最高売上達成。" },
+{ code:"7803", name:"ブシロード", cat:"ゲーム", period:"2026年6月期", release:null,
+revenue:null, revGrowth:null, opProfit:null, opGrowth:null,
+note:"6月期決算。通期結果は2026年8月頃発表予定。予想: 売上565億円、営業利益46億円（前期比-5.5%）。" },
+// トイホビー
+{ code:"7867", name:"タカラトミー", cat:"トイホビー", period:"2026年3月期", release:"2026-05-12",
+revenue:270455, revGrowth:8.1, opProfit:24246, opGrowth:-2.5,
+note:"売上高過去最高（2,704億円）。戦略的投資増・米関税影響で営業利益は微減。" },
+{ code:"7552", name:"ハピネット", cat:"トイホビー", period:"2026年3月期", release:"2026-05-14",
+revenue:439052, revGrowth:20.5, opProfit:15590, opGrowth:33.5,
+note:"Switch 2関連商材伸長でゲーム事業急拡大。売上+20.5%、営業利益+33.5%の大幅増収増益。" },
+{ code:"6238", name:"フリュー", cat:"トイホビー", period:"2026年3月期", release:"2026-05-14",
+revenue:44767, revGrowth:1.0, opProfit:3315, opGrowth:48.1,
+note:"営業利益+48.1%と大幅増益。クレーンゲーム景品・海外物販が好調。" },
+{ code:"7809", name:"壽屋", cat:"トイホビー", period:"2026年6月期", release:null,
+revenue:null, revGrowth:null, opProfit:null, opGrowth:null,
+note:"6月期決算。通期結果は2026年8月頃発表予定。予想: 売上165億円、営業利益8億円（下方修正済）。" },
+{ code:"8136", name:"サンリオ", cat:"トイホビー", period:"2026年3月期", release:"2026-06-23",
+revenue:194088, revGrowth:33.9, opProfit:77859, opGrowth:50.3,
+note:"5期連続で売上・利益ともに過去最高更新。国内外ライセンス・物販が全方位好調。" },
+// アニメ・映像
+{ code:"9602", name:"東宝", cat:"アニメ・映像", period:"2026年2月期", release:"2026-04-14",
+revenue:360663, revGrowth:15.2, opProfit:67889, opGrowth:5.0,
+note:"劇場版「鬼滅の刃」・「国宝」のメガヒット。全主要指標で過去最高更新。" },
+{ code:"4816", name:"東映アニメーション", cat:"アニメ・映像", period:"2026年3月期", release:"2026-05-11",
+revenue:93600, revGrowth:6.4, opProfit:31000, opGrowth:19.2,
+note:"海外版権好調・円安効果で大幅上方修正。売上936億・営業利益310億（共に修正後）。" },
+{ code:"9468", name:"KADOKAWA", cat:"アニメ・映像", period:"2026年3月期", release:"2026-05-14",
+revenue:282908, revGrowth:1.8, opProfit:8102, opGrowth:-51.3,
+note:"出版・ゲーム減収減益、アニメ実写赤字転落。不祥事影響も残存。" },
+// テーマパーク
+{ code:"4661", name:"オリエンタルランド", cat:"テーマパーク", period:"2026年3月期", release:"2026-04-28",
+revenue:704500, revGrowth:3.7, opProfit:168400, opGrowth:-2.1,
+note:"売上高7,045億円で過去最高も、コスト増が上回り営業利益は2.1%減。" },
 ];
 
 const CATS = ["ゲーム","トイホビー","アニメ・映像","テーマパーク"];
 const PERIODS = [
-  { label:"1ヶ月", days:30 },
-  { label:"3ヶ月", days:90 },
-  { label:"6ヶ月", days:180 },
+{ label:"1ヶ月", days:30 },
+{ label:"3ヶ月", days:90 },
+{ label:"6ヶ月", days:180 },
 ];
 
 let activeCats = new Set(CATS);
@@ -245,170 +245,170 @@ let activePeriodDays = 30;
 
 // ---- helpers ----
 function fmt(n, unit='M') {
-  if (n == null) return '—';
-  if (n >= 100000) return (n/100000).toFixed(1) + '兆円';
-  if (n >= 10000) return (n/10000).toFixed(0) + '億円';
-  return n + '百万円';
+if (n == null) return '—';
+if (n >= 100000) return (n/100000).toFixed(1) + '兆円';
+if (n >= 10000) return (n/10000).toFixed(0) + '億円';
+return n + '百万円';
 }
 function growthEl(g, prefix='') {
-  if (g == null) return '<span class="growth-na">—</span>';
-  const cls = g > 0 ? 'growth-pos' : g < 0 ? 'growth-neg' : 'growth-na';
-  const sign = g > 0 ? '+' : '';
-  return `<span class="${cls}">${sign}${g.toFixed(1)}%</span>`;
+if (g == null) return '<span class="growth-na">—</span>';
+const cls = g > 0 ? 'growth-pos' : g < 0 ? 'growth-neg' : 'growth-na';
+const sign = g > 0 ? '+' : '';
+return `<span class="${cls}">${sign}${g.toFixed(1)}%</span>`;
 }
 function daysAgo(dateStr) {
-  if (!dateStr) return 9999;
-  const d = new Date(dateStr);
-  return Math.floor((TODAY - d) / 86400000);
+if (!dateStr) return 9999;
+const d = new Date(dateStr);
+return Math.floor((TODAY - d) / 86400000);
 }
 
 // ---- KPIs ----
 function buildKPIs() {
-  const announced = companies.filter(c => c.release);
-  const topRev = [...announced].filter(c=>c.revGrowth!=null).sort((a,b)=>b.revGrowth-a.revGrowth)[0];
-  const topOp = [...announced].filter(c=>c.opGrowth!=null).sort((a,b)=>b.opGrowth-a.opGrowth)[0];
-  const latestRelease = [...announced].sort((a,b)=>new Date(b.release)-new Date(a.release))[0];
-  const pending = companies.filter(c=>!c.release).length;
+const announced = companies.filter(c => c.release);
+const topRev = [...announced].filter(c=>c.revGrowth!=null).sort((a,b)=>b.revGrowth-a.revGrowth)[0];
+const topOp = [...announced].filter(c=>c.opGrowth!=null).sort((a,b)=>b.opGrowth-a.opGrowth)[0];
+const latestRelease = [...announced].sort((a,b)=>new Date(b.release)-new Date(a.release))[0];
+const pending = companies.filter(c=>!c.release).length;
 
-  document.getElementById('kpi-row').innerHTML = `
-    <div class="kpi-card">
-      <div class="label">発表済み企業</div>
-      <div class="value">${announced.length}<span style="font-size:14px;font-weight:400;color:#6e6e73"> / ${companies.length}社</span></div>
-      <div class="sub">${pending}社が通期発表待ち</div>
-    </div>
-    <div class="kpi-card">
-      <div class="label">最高売上成長</div>
-      <div class="value" style="color:#0071e3">+${topRev?.revGrowth?.toFixed(1)}%</div>
-      <div class="sub">${topRev?.name}</div>
-    </div>
-    <div class="kpi-card">
-      <div class="label">最高利益成長</div>
-      <div class="value" style="color:#30b040">+${topOp?.opGrowth?.toFixed(1)}%</div>
-      <div class="sub">${topOp?.name}</div>
-    </div>
-    <div class="kpi-card">
-      <div class="label">最新決算発表</div>
-      <div class="value" style="font-size:15px">${latestRelease?.name}</div>
-      <div class="sub">${latestRelease?.release}</div>
-    </div>
-  `;
+document.getElementById('kpi-row').innerHTML = `
+<div class="kpi-card">
+<div class="label">発表済み企業</div>
+<div class="value">${announced.length}<span style="font-size:14px;font-weight:400;color:#6e6e73"> / ${companies.length}社</span></div>
+<div class="sub">${pending}社が通期発表待ち</div>
+</div>
+<div class="kpi-card">
+<div class="label">最高売上成長</div>
+<div class="value" style="color:#0071e3">+${topRev?.revGrowth?.toFixed(1)}%</div>
+<div class="sub">${topRev?.name}</div>
+</div>
+<div class="kpi-card">
+<div class="label">最高利益成長</div>
+<div class="value" style="color:#30b040">+${topOp?.opGrowth?.toFixed(1)}%</div>
+<div class="sub">${topOp?.name}</div>
+</div>
+<div class="kpi-card">
+<div class="label">最新決算発表</div>
+<div class="value" style="font-size:15px">${latestRelease?.name}</div>
+<div class="sub">${latestRelease?.release}</div>
+</div>
+`;
 }
 
 // ---- Category filters ----
 function buildCatFilters() {
-  const el = document.getElementById('cat-filters');
-  el.innerHTML = ['全て', ...CATS].map(c => {
-    const active = c === '全て' ? activeCats.size === CATS.length : activeCats.has(c);
-    return `<button class="pill ${active?'active':''}" data-cat="${c}">${c}</button>`;
-  }).join('');
-  el.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cat = btn.dataset.cat;
-      if (cat === '全て') { activeCats = new Set(CATS); }
-      else {
-        if (activeCats.has(cat) && activeCats.size > 1) activeCats.delete(cat);
-        else activeCats.add(cat);
-      }
-      buildCatFilters(); renderGrid(); renderCharts();
-    });
-  });
+const el = document.getElementById('cat-filters');
+el.innerHTML = ['全て', ...CATS].map(c => {
+const active = c === '全て' ? activeCats.size === CATS.length : activeCats.has(c);
+return `<button class="pill ${active?'active':''}" data-cat="${c}">${c}</button>`;
+}).join('');
+el.querySelectorAll('button').forEach(btn => {
+btn.addEventListener('click', () => {
+const cat = btn.dataset.cat;
+if (cat === '全て') { activeCats = new Set(CATS); }
+else {
+if (activeCats.has(cat) && activeCats.size > 1) activeCats.delete(cat);
+else activeCats.add(cat);
+}
+buildCatFilters(); renderGrid(); renderCharts();
+});
+});
 }
 
 // ---- Period filters ----
 function buildPeriodFilters() {
-  const el = document.getElementById('period-filters');
-  el.innerHTML = PERIODS.map(p => {
-    const active = p.days === activePeriodDays;
-    return `<button class="pill ${active?'active':''}" data-days="${p.days}">${p.label}</button>`;
-  }).join('');
-  el.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      activePeriodDays = +btn.dataset.days;
-      buildPeriodFilters(); renderGrid(); renderCharts();
-    });
-  });
+const el = document.getElementById('period-filters');
+el.innerHTML = PERIODS.map(p => {
+const active = p.days === activePeriodDays;
+return `<button class="pill ${active?'active':''}" data-days="${p.days}">${p.label}</button>`;
+}).join('');
+el.querySelectorAll('button').forEach(btn => {
+btn.addEventListener('click', () => {
+activePeriodDays = +btn.dataset.days;
+buildPeriodFilters(); renderGrid(); renderCharts();
+});
+});
 }
 
 // ---- Grid ----
 function renderGrid() {
-  const el = document.getElementById('company-grid');
-  el.innerHTML = companies.map(c => {
-    const catHidden = !activeCats.has(c.cat);
-    const tooOld = daysAgo(c.release) > activePeriodDays;
-    const dimmed = tooOld && c.release;
-    const pending = !c.release;
+const el = document.getElementById('company-grid');
+el.innerHTML = companies.map(c => {
+const catHidden = !activeCats.has(c.cat);
+const tooOld = daysAgo(c.release) > activePeriodDays;
+const dimmed = tooOld && c.release;
+const pending = !c.release;
 
-    return `
-    <div class="company-card ${catHidden?'hidden':''} ${dimmed?'dimmed':''}"
-         data-release="${c.release||''}" data-cats="${c.cat}">
-      <div class="card-header">
-        <div>
-          <div class="name">${c.name}${!tooOld&&c.release?'<span class="new-badge">NEW</span>':''}</div>
-          <div class="code">${c.code} · ${c.period}</div>
-        </div>
-        <span class="cat-badge ${c.cat}">${c.cat}</span>
-      </div>
-      ${pending ? '<div class="pending-badge">🕐 通期発表待ち</div>' : ''}
-      <div class="metrics">
-        <div class="metric">
-          <div class="m-label">売上高</div>
-          <div class="m-value">${fmt(c.revenue)}</div>
-          <div class="m-growth">${growthEl(c.revGrowth)}</div>
-        </div>
-        <div class="metric">
-          <div class="m-label">営業利益</div>
-          <div class="m-value">${fmt(c.opProfit)}</div>
-          <div class="m-growth">${growthEl(c.opGrowth)}</div>
-        </div>
-      </div>
-      <div class="card-footer">${c.note}</div>
-      ${c.release ? `<div class="release-date">📅 発表日: ${c.release}</div>` : ''}
-    </div>`;
-  }).join('');
+return `
+<div class="company-card ${catHidden?'hidden':''} ${dimmed?'dimmed':''}"
+data-release="${c.release||''}" data-cats="${c.cat}">
+<div class="card-header">
+<div>
+<div class="name">${c.name}${!tooOld&&c.release?'<span class="new-badge">NEW</span>':''}</div>
+<div class="code">${c.code} · ${c.period}</div>
+</div>
+<span class="cat-badge ${c.cat}">${c.cat}</span>
+</div>
+${pending ? '<div class="pending-badge">🕐 通期発表待ち</div>' : ''}
+<div class="metrics">
+<div class="metric">
+<div class="m-label">売上高</div>
+<div class="m-value">${fmt(c.revenue)}</div>
+<div class="m-growth">${growthEl(c.revGrowth)}</div>
+</div>
+<div class="metric">
+<div class="m-label">営業利益</div>
+<div class="m-value">${fmt(c.opProfit)}</div>
+<div class="m-growth">${growthEl(c.opGrowth)}</div>
+</div>
+</div>
+<div class="card-footer">${c.note}</div>
+${c.release ? `<div class="release-date">📅 発表日: ${c.release}</div>` : ''}
+</div>`;
+}).join('');
 }
 
 // ---- Charts ----
 let chartRev, chartOp;
 function renderCharts() {
-  const vis = companies.filter(c => activeCats.has(c.cat) && c.release && daysAgo(c.release) <= activePeriodDays);
-  const fallback = companies.filter(c => activeCats.has(c.cat) && c.release && c.revGrowth != null);
-  const data = vis.length >= 2 ? vis : fallback;
+const vis = companies.filter(c => activeCats.has(c.cat) && c.release && daysAgo(c.release) <= activePeriodDays);
+const fallback = companies.filter(c => activeCats.has(c.cat) && c.release && c.revGrowth != null);
+const data = vis.length >= 2 ? vis : fallback;
 
-  const names = data.map(c => c.name.length > 6 ? c.name.slice(0,6)+'…' : c.name);
-  const revG = data.map(c => c.revGrowth);
-  const opG = data.map(c => c.opGrowth);
-  const catColors = { 'ゲーム':'#7c6deb','トイホビー':'#f0a030','アニメ・映像':'#3abf6a','テーマパーク':'#e05a50' };
-  const colors = data.map(c => catColors[c.cat] || '#888');
+const names = data.map(c => c.name.length > 6 ? c.name.slice(0,6)+'…' : c.name);
+const revG = data.map(c => c.revGrowth);
+const opG = data.map(c => c.opGrowth);
+const catColors = { 'ゲーム':'#7c6deb','トイホビー':'#f0a030','アニメ・映像':'#3abf6a','テーマパーク':'#e05a50' };
+const colors = data.map(c => catColors[c.cat] || '#888');
 
-  const opts = (label) => ({
-    responsive: true,
-    maintainAspectRatio: true,
-    plugins: { legend: { display: false }, tooltip: { callbacks: {
-      label: ctx => `${ctx.parsed.y != null ? (ctx.parsed.y > 0 ? '+' : '') + ctx.parsed.y.toFixed(1) + '%' : '—'}`
-    }}},
-    scales: {
-      x: { ticks: { font: { size: 10 } } },
-      y: { ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } }
-    }
-  });
+const opts = (label) => ({
+responsive: true,
+maintainAspectRatio: true,
+plugins: { legend: { display: false }, tooltip: { callbacks: {
+label: ctx => `${ctx.parsed.y != null ? (ctx.parsed.y > 0 ? '+' : '') + ctx.parsed.y.toFixed(1) + '%' : '—'}`
+}}},
+scales: {
+x: { ticks: { font: { size: 10 } } },
+y: { ticks: { callback: v => v + '%' }, grid: { color: '#f0f0f0' } }
+}
+});
 
-  if (chartRev) { chartRev.destroy(); chartRev = null; }
-  if (chartOp)  { chartOp.destroy();  chartOp  = null; }
+if (chartRev) { chartRev.destroy(); chartRev = null; }
+if (chartOp) { chartOp.destroy(); chartOp = null; }
 
-  chartRev = new Chart(document.getElementById('chartRev'), {
-    type: 'bar',
-    data: { labels: names, datasets: [{ data: revG, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
-    options: opts('売上高成長率'),
-  });
-  chartOp = new Chart(document.getElementById('chartOp'), {
-    type: 'bar',
-    data: { labels: names, datasets: [{ data: opG, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
-    options: opts('営業利益成長率'),
-  });
+chartRev = new Chart(document.getElementById('chartRev'), {
+type: 'bar',
+data: { labels: names, datasets: [{ data: revG, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+options: opts('売上高成長率'),
+});
+chartOp = new Chart(document.getElementById('chartOp'), {
+type: 'bar',
+data: { labels: names, datasets: [{ data: opG, backgroundColor: colors, borderRadius: 4, borderSkipped: false }] },
+options: opts('営業利益成長率'),
+});
 }
 
 // ---- Init ----
-document.getElementById('updated-at').textContent = '更新: 2026-07-21';
+document.getElementById('updated-at').textContent = '更新: 2026-07-24';
 buildKPIs();
 buildCatFilters();
 buildPeriodFilters();
